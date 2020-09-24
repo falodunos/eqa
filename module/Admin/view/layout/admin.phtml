@@ -1,0 +1,308 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+        <?php echo $this->headTitle('EQA ' . $this->translate('EXAMSQA'))->setSeparator(' - ')->setAutoEscape(false)?>
+
+        <?php
+        echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')?>
+
+        <!-- Le styles -->
+        <?php
+        echo "<div style='margin-bottom: 50px'></div>";
+        echo $this->headLink(array(
+            'rel' => 'shortcut icon',
+            'type' => 'image/vnd.microsoft.icon',
+            'href' => $this->basePath() . '/img/eqa-icon.ico'
+        ))
+            ->prependStylesheet($this->basePath() . '/admin/css/ajaxImageUpload.css')
+            ->prependStylesheet($this->basePath() . '/admin/plugins/fancybox/jquery.fancybox.css')
+            ->prependStylesheet($this->basePath() . '/admin/css/devoops/style.css')
+            ->prependStylesheet($this->basePath() . '/admin/plugins/select2/select2.css')
+            ->prependStylesheet($this->basePath() . '/admin/plugins/xcharts/xcharts.min.css')
+            ->prependStylesheet($this->basePath() . '/admin/plugins/fullcalendar/fullcalendar.css')
+            ->prependStylesheet($this->basePath() . '/admin/plugins/fancybox/jquery.fancybox.css')
+            ->prependStylesheet('http://fonts.googleapis.com/css?family=Righteous')
+            ->prependStylesheet('http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
+            ->
+        // ->prependStylesheet('examsqa/css/font-awesome.min.css')
+        // ->prependStylesheet('examsqa/css/davegandy-4-0-3-font-awesome.css')
+        prependStylesheet($this->basePath() . '/admin/plugins/jquery-ui/jquery-ui.min.css')
+            ->prependStylesheet($this->basePath() . '/admin/plugins/bootstrap/bootstrap.css')?>
+
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+            ->prependFile($this->basePath() . '/admin/plugins/datatables/jquery.dataTables.js')
+            ->prependFile($this->basePath() . '/admin/js/examsqa.js')
+            ->prependFile($this->basePath() . '/admin/plugins/clipboard.js/dist/clipboard.min.js')
+            ->prependFile($this->basePath() . '/admin/js/devoops.js')
+            ->prependFile($this->basePath() . '/admin/plugins/tinymce/jquery.tinymce.min.js')
+            ->prependFile($this->basePath() . '/admin/plugins/tinymce/tinymce.min.js')
+            ->prependFile($this->basePath() . '/admin/plugins/justified-gallery/jquery.justifiedgallery.min.js')
+            ->prependFile($this->basePath() . '/admin/plugins/bootstrap/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/admin/plugins/jquery-ui/jquery-ui.min.js')
+            ->prependFile($this->basePath() . '/admin/plugins/jquery/jquery.form.js')
+            ->prependFile($this->basePath() . '/admin/plugins/jquery/jquery-2.1.0.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array(
+            'conditional' => 'lt IE 9'
+        ))
+            ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array(
+            'conditional' => 'lt IE 9'
+        ));
+        ?>
+    </head>
+<?php $userRoleId = $this->zfcUserIdentity()->getRoles()[0]->getRoleId();?>
+<body>
+	<!--Start Header-->
+	<div id="screensaver">
+		<canvas id="canvas"></canvas>
+		<i class="fa fa-lock" id="screen_unlock"></i>
+	</div>
+	<div id="modal-imgupload"></div>
+
+	<div id="modalbox">
+		<div class="devoops-modal">
+			<div class="devoops-modal-header">
+				<div class="modal-header-name">
+					<span>Basic table</span>
+				</div>
+				<div class="box-icons">
+					<a class="close-link" data-dismiss="modal" aria-hidden="true"> <i
+						class="fa fa-times"></i>
+					</a>
+				</div>
+			</div>
+			<div class="devoops-modal-inner"></div>
+			<div class="devoops-modal-bottom"></div>
+		</div>
+	</div>
+	<header class="navbar">
+		<div class="container-fluid expanded-panel">
+			<div class="row">
+				<div id="logo" class="col-xs-12 col-sm-2">
+					<a href="<?php echo $this->url('zfcadmin'); ?>">Exams-QA</a>
+				</div>
+				<div id="top-panel" class="col-xs-12 col-sm-10">
+					<div class="row">
+						<div class="col-xs-8 col-sm-4">
+							<a href="<?php echo $this->url('zfcadmin'); ?>" class="show-sidebar"> <i class="fa fa-bars"></i>
+							</a>
+                            <form method = 'post' action = ''>
+                            <div id="search">
+								<input id = 'global-system-search' type="text" placeholder="find a user by token" /> <i id = 'global-system-search-icon' class="fa fa-search"></i>
+							</div>
+                            </form>
+						</div>
+						<div class="col-xs-4 col-sm-8 top-panel-right">
+							<ul class="nav navbar-nav pull-right panel-menu">
+								<li class="hidden-xs"><a href="#" class="modal-link"> <i
+										class="fa fa-bell"></i> <span class="badge">7</span>
+								</a></li>
+								<li class="hidden-xs"><a class="ajax-link"
+									href="#"> <i class="fa fa-calendar"></i> <span
+										class="badge">7</span>
+								</a></li>
+								<li class="hidden-xs"><a href="#"
+									class="ajax-link"> <i class="fa fa-envelope"></i> <span
+										class="badge">7</span>
+								</a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle account"
+									data-toggle="dropdown">
+										<div class="avatar">
+											<img
+												src="<?php echo $this->basePath() . '/admin/img/avatar.png'; ?>"
+												class="img-rounded" alt="avatar" />
+										</div> <i class="fa fa-angle-down pull-right"></i>
+										<div class="user-mini pull-right">
+											<span class="welcome">Welcome,</span> <span><?php echo $this->zfcUserDisplayName() ?></span>
+										</div>
+								</a>
+									<ul class="dropdown-menu">
+										<li><a href="#"> <i class="fa fa-user"></i> <span
+												class="hidden-sm text">Profile</span>
+										</a></li>
+										<li><a href="<?php echo $this->url('zfcuser/logout') ?>"> <i class="fa fa-power-off"></i> <span
+												class="hidden-sm text"><?php echo $this->translate('Logout'); ?></span>
+										</a></li>
+									</ul></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!--End Header-->
+	<div id="main" class="container-fluid">
+		<div class="row">
+			<div id="sidebar-left" class="col-xs-2 col-sm-2">
+				<ul class="nav main-menu">
+					<li><a
+						href="<?php echo $this->url('zfcadmin/ajax', array('action' => 'index', 'controller' => 'dashboard')); ?>"
+						class="active ajax-link"> <i class="fa fa-dashboard"></i> <span
+							class="hidden-xs">Dashboard</span>
+					</a></li>
+					
+					
+					<?php if ($userRoleId != 'admin' && $userRoleId != 'operation-admin') :?>
+    					<?php if ($userRoleId == 'root-admin') :?>
+        					<li class="dropdown"><a
+        						href="<?php echo $this->url('zfcadmin/exam', array('action' => 'overview', 'controller' => 'institution')); ?>"
+        						class="dropdown-toggle"> <i class="fa fa-pencil-square-o"></i> <span
+        							class="hidden-xs">Manage Institutions</span>
+        					</a>
+        						<ul class="dropdown-menu">
+        							<!--<li> <a class="ajax-link" href="<?php //echo $this->url('zfcadmin/exam', array('action' => 'index', 'controller' => 'institution')); ?>">All Institutions</a></li> -->
+        							<li><a class="ajax-link"
+        								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'institution')); ?>">Manage
+        									Institutions</a></li>
+        						</ul></li>
+                          <?php endif;?>
+                        
+					<li class="dropdown"><a
+						href="<?php echo $this->url('zfcadmin/exam', array('action' => 'overview', 'controller' => 'department')); ?>"
+						class="dropdown-toggle"> <i class="fa fa-pencil-square-o"></i> <span
+							class="hidden-xs">Manage Departments</span>
+					</a>
+						<ul class="dropdown-menu">
+							<!-- <li><a class="ajax-link"  href="<?php //echo $this->url('zfcadmin/exam', array('action' => 'index', 'controller' => 'department')); ?>">All Department</a></li> -->
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'department')); ?>">Manage
+									Departments</a></li>
+						</ul></li>
+                    <?php endif;?>
+                    
+                    
+					<li class="dropdown">
+    					<a href="<?php echo $this->url('zfcadmin/exam', array('action' => 'overview', 'controller' => 'exam')); ?>"
+    						class="dropdown-toggle"> <i class="fa fa-bar-chart-o"></i> <span class="hidden-xs">Manage Exams</span>
+    					</a>
+						<ul class="dropdown-menu">
+						<?php if ($userRoleId == 'root-admin') :?>
+						    <li>
+    							 <a class="ajax-link" href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'exam-month')); ?>">
+    							 Exam Month
+    							 </a>
+							</li>
+							<?php endif;?>
+						<?php if ($userRoleId == 'super-admin' || $userRoleId == 'root-admin') :?>
+							<li>
+    							<a class="ajax-link" href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'level')); ?>">
+    							     Exam Level
+    							</a>
+							</li>
+							<li>
+							     <a class="ajax-link" href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'certificate')); ?>">
+							     Exam Certificate
+								 </a>
+							</li>
+							<?php endif;?>
+							<li>
+    							<a class="ajax-link" href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'exam')); ?>">
+    							     Exam Body
+    							</a>
+							</li>
+						</ul>
+						</li>
+						
+						
+					<li class="dropdown"><a
+						href="<?php echo $this->url('zfcadmin/exam', array('action' => 'overview', 'controller' => 'subject')); ?>"
+						class="dropdown-toggle"> <i class="fa fa-table"></i> <span
+							class="hidden-xs">Manage Subjects</span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'subject')); ?>">Exam
+									Subjects</a></li>
+						</ul>
+						</li>
+
+						
+					<li class="dropdown"><a
+						href="<?php echo $this->url('zfcadmin/exam', array('action' => 'overview', 'controller' => 'question')); ?>"
+						class="dropdown-toggle"> <i class="fa fa-table"></i> <span
+							class="hidden-xs">Manage Questions</span>
+					</a>
+						<ul class="dropdown-menu">
+						<?php if ($userRoleId == 'root-admin') :?>
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'question-type')); ?>">
+									Question Type</a></li>
+						<?php endif;?>
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'question-paper')); ?>">Question
+									Paper</a></li>
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'question-section')); ?>">Question
+									Section</a></li>
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'question')); ?>">
+									Question</a></li>
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'entry', 'controller' => 'answer-option')); ?>">
+									Question Answer</a></li>
+						</ul></li>
+
+						
+                    <?php if ($userRoleId != 'admin') :?>
+					<li class="dropdown">
+					<a href="<?php echo $this->url('zfcadmin/exam', array('action' => 'overview', 'controller' => 'permission')); ?>"
+						class="dropdown-toggle"> <i class="fa fa-desktop"></i> <span
+							class="hidden-xs">Manage Permissions</span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'users', 'controller' => 'permission')); ?>">Manage
+									Users </a>
+							</li>
+							<?php if ($userRoleId != 'root-admin') :?>
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'admins', 'controller' => 'permission')); ?>">Manage
+									Admins </a>
+							</li>
+							<?php endif;?>
+							<?php if ($userRoleId == 'root-admin') :?>
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'partners', 'controller' => 'permission')); ?>">Manage
+									Partners </a>
+							</li>
+							
+							<li><a class="ajax-link"
+								href="<?php echo $this->url('zfcadmin/exam', array('action' => 'roles', 'controller' => 'permission')); ?>">Manage
+									Roles</a>
+							</li>
+							<?php endif;?>
+						</ul></li>
+						<?php endif;?>
+						<li>
+						<a href="<?php echo $this->url('zfcadmin/exam', array('action' => 'index', 'controller' => 'wysiwyg'))?>" target="_blank"><i class="fa fa-desktop"></i> Use WYSISWYG Editor</a> 
+						</li>
+				</ul>
+			</div>
+			<!--Start Content-->
+			<div id="content" class="col-xs-12 col-sm-10">
+				<!-- 				<div class="preloader"> -->
+				<!-- <img src="<?php //echo $this->basePath() . 'admin/img/devoops_getdata.gif';   ?>" class="devoops-getdata" alt="preloader" /> -->
+				<!-- 				</div> -->
+				<div id="ajax-content"><?php echo $this->content; ?></div>
+			</div>
+			<!--End Content-->
+		</div>
+		<hr>
+		<footer>
+			<p align="center"> 
+                    &copy; 2015 - <?php echo date('Y') ?> by SearchLight Networks.
+                    <?php echo $this->translate('All rights reserved.') ?> 
+                </p>
+		</footer>
+	</div>
+	<!-- /container -->
+
+        <?php echo $this->inlineScript()?>
+    </body>
+</html>

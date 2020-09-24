@@ -1,0 +1,80 @@
+<?php
+   // echo $this->headScript()->prependFile($this->basePath() . '/admin/js/ajaxImageUpload.js');
+?>
+
+<div class="modal-window">
+	<button type="button" class="modal-toggle modal-close glyphicon glyphicon-remove"></button>
+	<div class="modal-content">
+		<div class="menu-frame">
+			<div class="buttons-frame">
+				<div class="media-router">
+					<button type="button" class="upload button"><?php echo $this->translate('Upload files')?></button>
+					<button type="button" class="gallery button"><?php echo $this->translate('Image gallery')?></button>
+				</div>
+			</div>
+			<div class="content-window"><div class="row" id="upload-document-form-id">
+	<?php
+        $form = $this->documentForm; //var_dump($form); die;
+        $form->setAttributes(array(
+            'action' => $this->url('zfcadmin/exam', array(
+                'action' => 'upload',
+                'controller' => 'question-image'
+            ))
+        ))->prepare();
+        echo $this->form()->openTag($form);
+        $image = $form->get('document-upload-fieldset');
+        echo $this->formHidden($image->get('id'));
+        echo $this->formHidden($image->get('parentEntityId')->setAttribute('value', $this->parentEntityId));
+    ?>
+		<div class="uploader-inline">
+		<label for="imgajax" class="file-upload-label">
+            <?php echo $this->formlabel($image->get('documentDescription')); ?>
+            <?php
+            echo $this->formText($image->get("documentDescription"));
+            ?>
+        </label>
+	</div>
+	<div class="uploader-inline">
+		<label for="imgajax" class="file-upload-label">
+            <?php echo $this->formlabel($image->get('documentName')); ?>
+            <?php
+            echo $this->formFile($image->get("documentName"));
+            echo $this->formElementErrors($image->get("documentName"));
+            ?>
+        </label>
+	</div>
+	<div class="uploader-inline">
+		<label for="imgajax" class="file-upload-label">
+            <?php echo $this->formLabel($image->get('isActive')); ?>
+            <?php
+            echo $this->formSelect($image->get("isActive"));
+            echo $this->formCheckbox($image->get("overiteExistingFile"));echo ' ';
+            echo $this->formLabel($image->get('overiteExistingFile'));
+            ?>
+        </label>
+	</div>
+	<div class="uploader-inline">
+		<label for="imgajax" class="file-upload-label">
+            <?php
+            echo $this->formSubmit($image->get("btnUploadFiles"));
+            ?>
+        </label>
+	</div>
+</div>
+<div class="gallery-view">
+	<div class="ajax-loader"></div>
+	<div class="view-large-image">
+		<img src="img/default.png" class="large-image">
+	</div>
+	<div class="image-grid"></div>
+</div></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+//Dynamically load image upload and gallery script
+    jQuery(document).ready(function(){
+    	jQuery.getScript('admin/js/ajaxImageUpload.js');
+        });
+</script>

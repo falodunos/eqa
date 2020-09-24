@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><?php echo $this->translate('Sign Up') ?></h3>
+			</div>
+			<div class="panel-body">
+<?php
+if (!$this->enableRegistration) {
+    print "Registration is disabled";
+    return;
+}
+$form = $this->registerForm;
+$form->prepare();
+$form->setAttribute('action', $this->url('zfcuser/register'));
+$form->setAttribute('method', 'post');
+echo $this->form()->openTag($form);
+?>
+     <?php 
+        $element_names = explode(',', 'lastName,firstName,email,password,passwordVerify,submit');
+        //$element_names = explode(',', 'lastName,firstName,email,phoneNumber,password,passwordVerify,submit');
+        $elements = array();
+        foreach ($element_names as $name){
+            $elements[] = $form->get($name);
+        }
+    ?>
+<?php foreach ($elements as $element) : ?>
+ 
+    <div class="form-group <?php if ($this->formElementErrors($element)) echo "has-error" ?>">
+        <?php
+            if ('submit' != $element->getAttribute('type')) { ?>
+                <!-- <label class="control-label"><?php //echo $element->getLabel() ?></label> -->
+                <?php
+                $element->setAttribute('class', 'form-control')
+                        ->setAttribute('placeholder', $element->getLabel());
+            } else {
+                $element->setAttribute('class', 'btn btn-success');
+            }
+            if ($element instanceof Zend\Form\Element\Captcha) {
+                echo $this->formCaptcha($element);
+            } else {
+                echo $this->formElement($element);
+            }
+            if ($this->formElementErrors($element)) : ?>
+                <?php
+                echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<p class="help-block">')
+                    ->setMessageSeparatorString('</p><p class="help-block">')
+                    ->setMessageCloseString('</p>')
+                    ->render($element);
+                ?>
+            <?php endif; ?>
+    </div>
+ 
+<?php
+endforeach;
+    if ($this->redirect): ?>
+        <input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>" />
+    <?php endif ?>
+<?php echo $this->form()->closeTag() ?>
+
+<?php echo $this->translate('Already registered?'); ?> <a href="<?php echo $this->url('zfcuser/login') . ($this->redirect ? '?redirect='.$this->escapeUrl($this->redirect) : '') ?>"><?php echo $this->translate('Sign in!'); ?></a>
+			</div>
+		</div>
+	</div>
+</div>

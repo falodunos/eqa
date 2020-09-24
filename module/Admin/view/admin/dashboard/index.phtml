@@ -1,0 +1,117 @@
+<!--Start Breadcrumb-->
+<?php
+$url1 = $this->url('zfcadmin');
+$url2 = $this->url('zfcadmin');
+$parameters = array(
+    array(
+        'url' => $url1,
+        'title' => 'Home'
+    ),
+    array()
+);
+echo $this->getBreadcrumbWidget($parameters);
+?>
+<!--End Breadcrumb-->
+<!--Start Dashboard 1-->
+<div id="dashboard-header" class="row">
+	<div class="col-xs-8 col-sm-4">
+		<h3>HELLO, <?php echo $this->zfcUserIdentity()->getLastName() ?>!</h3>
+	</div>
+		<div class="col-xs-4 col-sm-8">
+		<div id="social" class="row">
+			<a href="#"><i class="fa fa-google-plus"></i></a>
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-youtube"></i></a>
+		</div>
+	</div>
+</div>
+<!--End Dashboard 1-->
+<!--Start Dashboard 2-->
+<div class="row-fluid">
+	<div id="dashboard_links" class="col-xs-12 col-sm-2 pull-right">
+		<ul class="nav nav-pills nav-stacked">
+			<li class="active"><a href="#" class="tab-link" id="overview">Overview</a></li>
+		</ul>
+	</div>
+	<div id="dashboard_tabs" class="col-xs-12 col-sm-10">
+		<!--Start Dashboard Tab 1-->
+		<div id="dashboard-overview" class="row" style="visibility: visible; position: relative;">
+			<div id="ow-marketplace" class="col-sm-12 col-md-6">
+				<div id="ow-setting">
+					<a href="#"><i class="fa fa-folder-open"></i></a>
+					<a href="#"><i class="fa fa-credit-card"></i></a>
+					<a href="#"><i class="fa fa-ticket"></i></a>
+					<a href="#"><i class="fa fa-bookmark-o"></i></a>
+					<a href="#"><i class="fa fa-globe"></i></a>
+				</div>
+				<h4 class="page-header">EXAMSQA FEATURES</h4>
+				<table id="ticker-table" class="table m-table table-bordered table-hover table-heading">
+					<thead>
+						<tr>
+							<th>Institution</th>
+							<th>Department</th>
+							<th>Exam</th>
+							<th>Phone</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="m-ticker">todo</td>
+							<td class="m-price">todo</td>
+							<td class="m-change">todo</td>
+							<td class="">todo</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-xs-12 col-md-6">
+			<br />
+				<div id="ow-summary" class="row">
+					<div class="col-xs-12">
+						<h4 class="page-header">&Sigma; SUMMARY</h4>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="row">
+									<div class="col-xs-6">Total Institutions<b>todo</b></div>
+									<div class="col-xs-6">Total Departments<b></b></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">Total Exams<b>todo</b></div>
+									<div class="col-xs-6">Total Subjects<b>todo</b></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">Total Questions<b>todo</b></div>
+									<div class="col-xs-6">Total Users<b>todo</b></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--End Dashboard Tab 1-->
+	</div>
+	<div class="clearfix"></div>
+</div>
+<!--End Dashboard 2 -->
+<div style="height: 40px;"></div>
+<script type="text/javascript">
+// Array for random data for Sparkline
+var sparkline_arr_1 = SparklineTestData();
+var sparkline_arr_2 = SparklineTestData();
+var sparkline_arr_3 = SparklineTestData();
+$(document).ready(function() {
+	// Make all JS-activity for dashboard
+	DashboardTabChecker();
+	// Load Knob plugin and run callback for draw Knob charts for dashboard(tab-servers)
+	LoadKnobScripts(DrawKnobDashboard);
+	// Load Sparkline plugin and run callback for draw Sparkline charts for dashboard(top of dashboard + plot in tables)
+	LoadSparkLineScript(DrawSparklineDashboard);
+	// Load Morris plugin and run callback for draw Morris charts for dashboard
+	LoadMorrisScripts(MorrisDashboard);
+	// Make beauty hover in table
+	$("#ticker-table").beautyHover();
+});
+</script>

@@ -1,0 +1,33 @@
+.circle-loader {
+    margin-top: 100px;  
+    margin-left: 48%;  
+	fill: transparent;
+	stroke: #009688;
+	stroke-width: 5;
+	animation: dash 2s ease infinite,rotate 2s linear infinite;
+}
+.circle-loader.progress{
+    background: none !important;
+    box-shadow: none !important;
+    height: auto !important;
+}
+@keyframes dash {
+	0% {
+		stroke-dasharray: 1,95;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 85,95;
+		stroke-dashoffset: -25;
+	}
+	100% {
+		stroke-dasharray: 85,95;
+		stroke-dashoffset: -93;
+	}
+}
+
+@keyframes rotate {
+	0% {transform: rotate(0deg); }
+	100% {transform: rotate(360deg); }
+}
+

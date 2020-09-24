@@ -1,0 +1,48 @@
+<div class='devoops-modal modal-lg'>
+	<div class='devoops-modal-header'>
+		<div class='modal-header-name'>
+			<span>Update Answer Option Text</span>
+		</div>
+		<div class='box-icons'>
+			<a class='close-link' data-dismiss='modal' aria-hidden='true'> 
+			   <i class='fa fa-times'></i>
+			</a>
+		</div>
+	</div>
+	<div class='devoops-modal-inner'>
+	   <form id='update-answer-option-form' action = ''>
+	       <textarea class='form-control' rows='10' data-key='update-answer-option'></textarea>
+	   </form>
+	</div>
+	
+	<div class='devoops-modal-bottom'>
+       <button type='button' class='btn btn-primary pull-right' id = 'update-answer-option-text'><?php echo $this->translate('Save changes')?></button>
+       <button type='button' class='btn btn-default pull-right' id = 'update-answer-option-text-dismiss' data-dismiss='modal'><?php echo $this->translate('Close')?></button>
+	</div>
+</div>
+
+<script type='text/javascript'>
+$(document).ready(function() {
+    $('#update-answer-option-text').on('click', function() { 
+        var questionText = $('#update-answer-option-form textarea');
+        var textValue = $.trim(questionText.val());
+        var idArr = questionText.attr('id').split('-');
+        var textId = idArr[1];
+        var con = confirm('Do want to save changes to this answer option ?');
+        if (con == true) {
+            if (questionText.toString().length == 0) {
+                alert('Oops! You cannot submit empty form, please fill in required information!');
+            } else {
+                $.post('/admin/answer-option/update-text', {'questionText': textValue, 'option_id' : textId}, function(data) {
+                    if (data.status == true) {
+                        alert('It is done, requested operation was completed successfully!');
+                    } else {
+                        alert('Oops! Something went wrong while trying to save your data, please try again.');
+                    }
+                    $('#update-answer-option-text-dismiss').trigger('click'); //close this update form ...
+                });
+            }
+        }
+    });
+});
+</script>

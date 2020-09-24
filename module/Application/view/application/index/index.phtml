@@ -1,0 +1,58 @@
+<div class="container-fluid">
+	<div class="row col-xs-12 col-sm-12 col-md-7 container-login">
+		<div class="banner-placeholder col-hidden-xs col-hidden-sm col-md-6">
+			<img src="img/home-banner.jpg" class="img-responsive" />
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-6 form-placeholder">
+			<div class="col-md-12" data-page="login">
+				<div class="logo-holder">
+					<img src="img/eqa-icon-text.png" alt="Logo" />
+				</div>
+				<hr>
+                <?php echo $this->zfcUserLoginWidget(); ?>
+            </div>
+			<div class="col-md-12" data-page="signup">
+				<div class="logo-holder">
+					<a class="back-button" href="javascript:;"> <i
+						class="lnr lnr-arrow-left"></i>Back
+					</a>
+				</div>
+				<hr />
+			<?php
+$options = array(
+    'enableRegistration' => true
+);
+echo $this->getExamsQAUserRegisterForm($options);
+?>
+            </div>
+			<div class="col-md-12" data-page="forgotpassword">
+				<div class="logo-holder">
+					<a class="back-button" href="javascript:;"> <i
+						class="lnr lnr-arrow-left"></i>Back
+					</a>
+				</div>
+				<hr />
+				<div id='password-reset-form-container'>
+					<div id='password-reset-error-container'></div>
+			<?php echo $this->getForgotPasswordForm(); ?>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+// 	var password = $("#password");
+// 	var confirm_password = $("#passwordVerify");
+	
+// 	password.on('change', validatePassword);
+// 	confirm_password.on('keyup', validatePassword);
+	
+// 	function validatePassword(){
+// 		if(password.value != confirm_password.value) {
+// 			confirm_password.setCustomValidity("Passwords Don't Match");
+// 			} else {
+// 				confirm_password.setCustomValidity('');
+// 				}
+// 		}
+</script>

@@ -1,0 +1,149 @@
+<?php
+$title = 'LEVEL';
+$this->headTitle($title);
+$url1 = $this->url('zfcadmin');
+$url2 = $this->url('zfcadmin');
+$parameters = array(
+    array(
+        'url' => $url1,
+        'title' => 'Paper'
+    ),
+    array(
+        'url' => $url2,
+        'title' => 'Registration'
+    )
+);
+echo $this->getBreadcrumbWidget($parameters); 
+?>
+<!--End Breadcrumb-->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i> <span><?php echo $this->translate('Question Paper')?></span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+                    </a> <a class="expand-link"> <i class="fa fa-expand"></i>
+                    </a> <a class="close-link"> <i class="fa fa-times"></i>
+                    </a>
+                </div>
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <div class="row" id = "questionPaperContent">
+                    <div class="col-sm-9">
+                        <h4 class="page-header"><?php echo $this->translate('Registration form')?></h4>
+
+                        <?php
+                        $form = $this->questionPaperForm;
+                        $form->setAttributes(array(
+                            'action' => $this->url('zfcadmin/exam', array(
+                                'action' => 'entry',
+                                'controller' => 'question-paper'
+                            ))
+                        ));
+                        $form->prepare();
+                        echo $this->form()->openTag($form); 
+                        $questionPaper = $form->get('question-paper-fieldset'); 
+                        $common = $form->get('common-fieldset');//die('got here');
+                        echo $this->formHidden($questionPaper->get('id'));
+                        ?>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('paperName')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formText($questionPaper->get('paperName')); ?>
+                            </div>
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('paperDuration')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formNumber($questionPaper->get('paperDuration')); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('paperYear')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formSelect($questionPaper->get('paperYear')); ?>
+                            </div>
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('examMonth')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formSelect($questionPaper->get('examMonth')); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('paperDescription')) ?></label>
+                            <div class="col-sm-10">
+                                <?php echo $this->formTextarea($questionPaper->get('paperDescription')); ?>
+                                <small style = 'float:right' >click <a href="#" id = 'copy-paper-desc' title = 'Copy Description!' onclick="copyContent(this, 'paperDescription', '')">here</a> to copy description !</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('paperInstruction')) ?></label>
+                            <div class="col-sm-10">
+                                <?php echo $this->formTextarea($questionPaper->get('paperInstruction')); ?>
+                                <small style = 'float:right' >click <a href="#" id = 'copy-paper-desc' title = 'Copy Instruction' onclick="copyContent(this, 'paperInstruction', 'Instruction is empty !')">here</a> to copy instruction !</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('paperSubject')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formSelect($questionPaper->get('paperSubject')); ?>
+                            </div>
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('paperExam')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formSelect($questionPaper->get('paperExam')); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('isActive')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formSelect($questionPaper->get('isActive')); ?>
+                            </div>
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-4">
+                                <?php 
+                                    //echo $this->formHidden($common->get('csrf'));
+                                    echo $this->formSubmit($common->get('submit')); echo ' ';
+                                    echo $this->formSubmit($common->get('clear'));
+                                ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($questionPaper->get('department')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formSelect($questionPaper->get('department')); ?>
+                            </div>
+                            <label class="col-sm-6 control-label"></label>
+                            <?php echo $this->form()->closeTag();?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4 class="page-header">Instruction</h4>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="row">
+									<div class="col-sm-12"><?php echo $this->translate('Further Information')?></div>
+									<div class="col-sm-12">
+										<ul>
+											<li>Fill the form and click save button.</li>
+											<li>If you're filling for the first time, use wysiswyg editor to enter and format description or instruction, then copy and paste into description or instruction field.</li>
+											<li>If you're editing an existing content, copy description or instruction and paste into the editor, edit and reformat as required then copy and paste into description or instruction field again.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+             <?php echo $this->getEntityListWidget('examsqa_admin_question_paper_service', 'getQuestionPapersHtml'); ?>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+submitForm('submit-btn','exam-question-paper-form');
+submitForm('clear-btn','exam-question-paper-form');
+</script>

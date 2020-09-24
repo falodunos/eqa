@@ -1,0 +1,71 @@
+<?php 
+    $this->headLink()->prependStylesheet($this->basePath() . '/css/categories.css');
+    $this->headScript()->prependFile($this->basePath() . '/js/categories.js');
+    
+    $institutionService = $this->getServiceManager()->get('examsqa_admin_institution_service');
+?>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header col-md-pull-9">
+			<button type="button" class="navbar-toggle" data-toggle="dropdown"
+				data-target="#myNavbar">
+				<i class="lnr lnr-chevron-down"></i>
+			</button>
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".searchbar">
+				<i class="lnr lnr-magnifier"></i>
+			</button>
+			<div class="menu-holder">
+				<button id="menu-bar" type="button" class="menu-bar pull-left">
+					<i class="lnr lnr-menu"></i>
+				</button>
+				<a class="navbar-brand" href="<?php echo $this->url('zfcuser')?>"><img src="<?php echo $this->basePath('/img/eqa-icon.png')?>" alt="EQA" /></a>
+			</div>
+		</div>
+		<ul class="nav navbar-nav navbar-right text-center">
+			<li class="dropdown" id="myNavbar">
+			<a class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown" href="#"> 
+    			 <img src="<?php echo $this->getProfileImageUrl($this->basePath(), $this->zfcUserIdentity());?>" class="img-rounded" alt="Cynthia morgan"> 
+    			 <i class="lnr lnr-chevron-down"></i>
+			</a>
+				<ul class="dropdown-menu">
+					<!-- <a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('Home') ?></a></li> -->
+					<li>
+					
+					<li><a href="<?php echo $this->url('zfcuser/edit-profile')?>"><?php echo $this->translate('Edit Profile') ?></a></li>
+					<li><a href="#"><?php echo $this->translate('Settings') ?></a></li> 
+                        <?php if (!$institutionService->checkIfInstitutionExist() && $this->zfcUserIdentity()->getRoles()[0]->getRoleId() == 'user'): ?>
+                            <li><a
+						href="<?php echo $this->url('application/front', array('action' => 'entry', 'controller' => 'institution')); ?>"><?php echo $this->translate('Become Partner') ?></a></li> 
+                        <?php endif;?>
+                        <?php if($this->zfcUserIdentity()): ?>
+                            <?php if($this->zfcUserIdentity()->getRoles()[0]->getRoleId() != 'user'): ?>
+                                <li><a
+						href="<?php echo $this->url('zfcadmin')?>">Administrator</a></li>
+                            <?php endif;?>
+                        <?php endif;?>
+                        
+                        <li><a
+						href="<?php echo $this->url('zfcuser/logout') ?>"><?php echo $this->translate('Logout') ?></a></li>
+					<li class="divider"></li>
+					<li><a href="#"><?php echo $this->translate('Help') ?></a></li>
+					<li><a href="#"><?php echo $this->translate('Report a problem') ?></a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<div class="nav navbar-nav navbar-right">
+			<div class="searchbar collapse" id="searchbar">
+				<form class="navbar-form" role="search">
+					<div class="input-group form-control">
+						<input type="text" class="col-md-10" placeholder="Search"
+							name="search-term" id="search-term">
+						<div class="input-group-btn">
+							<a href="#" type="submit"><i class="lnr lnr-magnifier"></i></a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</nav>

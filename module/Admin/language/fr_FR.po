@@ -1,0 +1,448 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ZendSkeletonApplication\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-22 13:15+0100\n"
+"PO-Revision-Date: 2016-03-22 14:02+0100\n"
+"Last-Translator: Evan Coury <me@evancoury.com>\n"
+"Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../view/admin/answer-option/entry.phtml:25
+#: ../view/admin/answer-option/index.phtml:7
+msgid "Answer Options"
+msgstr "Options de réponse"
+
+#: ../view/admin/answer-option/entry.phtml:38
+#: ../view/admin/certificate/entry.phtml:39
+#: ../view/admin/exam-month/entry.phtml:38 ../view/admin/exam/entry.phtml:38
+#: ../view/admin/level/entry.phtml:39
+#: ../view/admin/question-paper/entry.phtml:38
+#: ../view/admin/question-section/entry.phtml:38
+#: ../view/admin/question-type/entry.phtml:38
+#: ../view/admin/question/entry.phtml:38 ../view/admin/subject/entry.phtml:39
+msgid "Registration form"
+msgstr "Formulaire d'inscription"
+
+#: ../view/admin/answer-option/entry.phtml:108
+#: ../view/admin/answer-option/entry.phtml:112
+#: ../view/admin/department/entry.phtml:121
+#: ../view/admin/institution/entry.phtml:114
+#: ../view/admin/permission/add-user.phtml:80
+#: ../view/admin/question-type/entry.phtml:83
+#: ../view/admin/question-type/entry.phtml:88
+#: ../view/admin/question/entry.phtml:101
+#: ../view/admin/question/entry.phtml:106 ../view/admin/subject/entry.phtml:97
+msgid "Instruction"
+msgstr "Instruction"
+
+#: ../view/admin/answer-option/index.phtml:27
+msgid "Exam"
+msgstr "Examen"
+
+#: ../view/admin/answer-option/index.phtml:28
+msgid "Paper"
+msgstr "Papier"
+
+#: ../view/admin/answer-option/index.phtml:29
+msgid "Section"
+msgstr "Section"
+
+#: ../view/admin/answer-option/index.phtml:30
+msgid "Tag"
+msgstr "Étiquette"
+
+#: ../view/admin/answer-option/index.phtml:31
+msgid "Text"
+msgstr "Texte"
+
+#: ../view/admin/answer-option/index.phtml:32
+msgid "Status"
+msgstr "Statut"
+
+#: ../view/admin/answer-option/index.phtml:33
+msgid "Correct"
+msgstr "Correct"
+
+#: ../view/admin/answer-option/index.phtml:34
+#: ../view/admin/permission/admins.phtml:44
+#: ../view/admin/permission/partners.phtml:45
+#: ../view/admin/permission/users.phtml:58
+msgid "Action"
+msgstr "Action"
+
+#: ../view/admin/certificate/entry.phtml:26
+msgid "Exam Certificate"
+msgstr "Certificat d'examen"
+
+#: ../view/admin/common/form/elements/answer-option/text.phtml:19
+msgid "Save changes"
+msgstr "Sauvegarder les modifications"
+
+#: ../view/admin/common/form/elements/answer-option/text.phtml:20
+msgid "Close"
+msgstr "Fermer"
+
+#: ../view/admin/dashboard/index.phtml:37
+msgid "Overview"
+msgstr "Aperçu"
+
+#: ../view/admin/dashboard/index.phtml:51
+msgid " FEATURES"
+msgstr "FONCTIONNALITÉS"
+
+#: ../view/admin/dashboard/index.phtml:75
+msgid "SUMMARY"
+msgstr "RÉSUMÉ"
+
+#: ../view/admin/dashboard/index.phtml:83
+msgid "Total Exams"
+msgstr "Total des examens"
+
+#: ../view/admin/dashboard/index.phtml:86
+msgid "Total Subjects"
+msgstr "Total Sujets"
+
+#: ../view/admin/dashboard/index.phtml:89
+msgid "Total Questions"
+msgstr "Total questions"
+
+#: ../view/admin/dashboard/index.phtml:90
+msgid "Total Users"
+msgstr "Total Utilisateurs"
+
+#: ../view/admin/department/entry.phtml:26
+#: ../view/admin/permission/admins.phtml:43
+msgid "Department"
+msgstr "Département"
+
+#: ../view/admin/department/entry.phtml:39
+msgid "Department Form"
+msgstr "Formulaire Département"
+
+#: ../view/admin/department/entry.phtml:125 ../view/admin/exam/entry.phtml:111
+#: ../view/admin/level/entry.phtml:101
+#: ../view/admin/permission/add-user.phtml:85
+#: ../view/admin/subject/entry.phtml:102
+msgid "Instruction Info"
+msgstr "Instruction Infos"
+
+#: ../view/admin/department/overview.phtml:18
+msgid "Department Overview"
+msgstr "Département Présentation"
+
+#: ../view/admin/exam-month/entry.phtml:25
+msgid "Exam Month"
+msgstr "Mois d'examen"
+
+#: ../view/admin/exam/entry.phtml:25 ../view/admin/subject/entry.phtml:26
+msgid "Exam Body"
+msgstr "Organe d'examen"
+
+#: ../view/admin/exam/overview.phtml:18
+msgid "Exam Overview"
+msgstr "Vue d'ensemble de l'examen"
+
+#: ../view/admin/institution/entry.phtml:25
+msgid "Institution"
+msgstr "Institution"
+
+#: ../view/admin/institution/entry.phtml:38
+msgid "Institution Form"
+msgstr "Formulaire Institution"
+
+#: ../view/admin/institution/entry.phtml:119
+msgid ""
+"An institution is an approved academic or professional body, saddled with "
+"the responsibility\n"
+"\t\t\t\t\t\t\t\t\tof educating her students or the members of such "
+"organization. By completing this process, \n"
+"\t\t\t\t\t\t\t\t\tthe institution will be associated with the currently "
+"login user account, the user will not \n"
+"\t\t\t\t\t\t\t\t\tbe able to create another institution with the same "
+"account and the institution is not transferrable\n"
+"\t\t\t\t\t\t\t\t\tfrom one user account to another.\n"
+"\t\t\t\t\t\t\t\t\t<br />\n"
+"\t\t\t\t\t\t\t\t\tHowever, you can always modify your account or institution "
+"details as you deem it fit.\n"
+"\t\t\t\t\t\t\t\t\t<br />\n"
+"\t\t\t\t\t\t\t\t\tThanks for being a partner!"
+msgstr ""
+"Une institution est un organisme universitaire ou professionnel agréé , aux "
+"prises avec la responsabilité d'éduquer ses élèves ou les membres d'une "
+"telle organisation. En remplissant ce processus , l'institution sera associé "
+"au compte de l'utilisateur actuellement se connecter, l'utilisateur ne sera "
+"pas TBE en mesure de créer une autre institution avec le même compte et "
+"l'institution ne sont pas transférables d'un compte utilisateur à un autre . "
+"<br /> Cependant , vous pouvez toujours modifier votre compte ou institution "
+"détails que vous jugez adapter . <br /> Merci d'être un partenaire !"
+
+#: ../view/admin/institution/overview.phtml:18
+msgid "Institution Overview"
+msgstr "Présentation Institution"
+
+#: ../view/admin/level/entry.phtml:26
+msgid "Exam Level"
+msgstr "Niveau d'examen"
+
+#: ../view/admin/permission/add-user.phtml:24
+msgid "Permission"
+msgstr "Autorisation"
+
+#: ../view/admin/permission/add-user.phtml:37
+msgid "Add User Form"
+msgstr "Ajouter un formulaire utilisateur"
+
+#: ../view/admin/permission/admins.phtml:22
+msgid "Administrators"
+msgstr "Administrateurs"
+
+#: ../view/admin/permission/admins.phtml:38
+#: ../view/admin/permission/partners.phtml:39
+#: ../view/admin/permission/users.phtml:52
+msgid "Lastname"
+msgstr "Nom de famille"
+
+#: ../view/admin/permission/admins.phtml:39
+#: ../view/admin/permission/partners.phtml:40
+#: ../view/admin/permission/users.phtml:53
+msgid "Firstname"
+msgstr "Prénom"
+
+#: ../view/admin/permission/admins.phtml:40
+msgid "Token"
+msgstr "Jeton"
+
+#: ../view/admin/permission/admins.phtml:41
+#: ../view/admin/permission/partners.phtml:42
+#: ../view/admin/permission/users.phtml:55
+msgid "Email"
+msgstr "Email"
+
+#: ../view/admin/permission/admins.phtml:42
+#: ../view/admin/permission/partners.phtml:43
+#: ../view/admin/permission/users.phtml:56
+msgid "Phone"
+msgstr "Téléphone"
+
+#: ../view/admin/permission/overview.phtml:20
+msgid "Permission Overview"
+msgstr "Permission Présentation"
+
+#: ../view/admin/permission/partners.phtml:41
+#: ../view/admin/permission/users.phtml:54
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: ../view/admin/permission/partners.phtml:44
+#: ../view/admin/permission/users.phtml:57
+msgid "Is_Admin"
+msgstr "Est-admin"
+
+#: ../view/admin/permission/partners.phtml:89
+msgid "Opps! No partner record was found on this system."
+msgstr "Opps ! Aucun record du partenaire a été trouvé sur ce système ."
+
+#: ../view/admin/permission/roles.phtml:22
+msgid "Roles"
+msgstr "Les rôles"
+
+#: ../view/admin/permission/roles.phtml:57
+msgid ""
+"NOTE: This roles were statically added to the database, new version of this "
+"app will automate role generation."
+msgstr ""
+"NOTE : Ce rôles étaient statiquement ajoutés à la base de données , une "
+"nouvelle version de cette application permettra d'automatiser la génération "
+"de rôle ."
+
+#: ../view/admin/permission/users.phtml:29
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: ../view/admin/permission/users.phtml:103
+msgid "No record found ."
+msgstr "Aucun Enregistrement Trouvé ."
+
+#: ../view/admin/question-image/upload.phtml:11
+msgid "Upload files"
+msgstr "Télécharger des fichiers"
+
+#: ../view/admin/question-image/upload.phtml:12
+msgid "Image gallery"
+msgstr "Galerie d'images"
+
+#: ../view/admin/question-paper/entry.phtml:25
+msgid "Question Paper"
+msgstr "Papier question"
+
+#: ../view/admin/question-section/entry.phtml:25
+msgid "Question Section"
+msgstr "Question Section"
+
+#: ../view/admin/question-type/entry.phtml:25
+msgid "Question Type"
+msgstr "Type de question"
+
+#: ../view/admin/question/entry.phtml:25
+msgid "Question"
+msgstr "Question"
+
+#: ../view/admin/question/overview.phtml:19
+msgid "Question Overview"
+msgstr "Question Présentation"
+
+#: ../view/admin/subject/overview.phtml:20
+msgid "Subject Overview"
+msgstr "Vue d'ensemble Sujet"
+
+#: ../view/layout/admin.phtml:6 ../view/layout/empty.phtml:6
+msgid "EXAMSQA"
+msgstr "EXAMSQA"
+
+#: ../view/layout/admin.phtml:128
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: ../view/layout/admin.phtml:294 ../view/layout/empty.phtml:162
+msgid "All rights reserved."
+msgstr "Tous droits réservés."
+
+#~ msgid "Skeleton Application"
+#~ msgstr "Skeleton Application"
+
+#~ msgid "Home"
+#~ msgstr "Accueil"
+
+#~ msgid "Welcome to %sZend Framework 2%s"
+#~ msgstr "Bienvenue dans le %sZend Framework 2%s"
+
+#~ msgid ""
+#~ "Congratulations! You have successfully installed the %sZF2 Skeleton "
+#~ "Application%s. You are currently running Zend Framework version %s. This "
+#~ "skeleton can serve as a simple starting point for you to begin building "
+#~ "your application on ZF2."
+#~ msgstr ""
+#~ "Félicitations ! Vous avez installé avec succès le %sZF2 Skeleton "
+#~ "Application%s. Vous utilisez actuellement Zend Framework version %s. "
+#~ "Cette structure peut vous servir comme un point de départ simple pour "
+#~ "démarrer la construction de votre application avec ZF2."
+
+#~ msgid "Fork Zend Framework 2 on GitHub"
+#~ msgstr "Faites un Fork de Zend Framework 2 sur GitHub"
+
+#~ msgid "Follow Development"
+#~ msgstr "Suivre le développement"
+
+#~ msgid ""
+#~ "Zend Framework 2 is under active development. If you are interested in "
+#~ "following the development of ZF2, there is a special ZF2 portal on the "
+#~ "official Zend Framework website which provides links to the ZF2 %swiki%s, "
+#~ "%sdev blog%s, %sissue tracker%s, and much more. This is a great resource "
+#~ "for staying up to date with the latest developments!"
+#~ msgstr ""
+#~ "Zend Framework 2 est en cours de développement. Si vous êtes intéressé "
+#~ "pour suivre l'évolution de ZF2, il existe un portail dédié à ZF2 sur le "
+#~ "site officiel Zend Framework qui propose des liens vers le %swiki%s ZF2, "
+#~ "%sdev blog%s, %ssuivi des problèmes%s, et bien plus encore. Il s'agit "
+#~ "d'une excellente ressource pour rester à jour sur les dernières "
+#~ "évolutions !"
+
+#~ msgid "ZF2 Development Portal"
+#~ msgstr "Portail sur le développement de ZF2"
+
+#~ msgid "Discover Modules"
+#~ msgstr "Découvrez les modules"
+
+#~ msgid ""
+#~ "The community is working on developing a community site to serve as a "
+#~ "repository and gallery for ZF2 modules. The project is available %son "
+#~ "GitHub%s. The site is currently live and currently contains a list of "
+#~ "some of the modules already available for ZF2."
+#~ msgstr ""
+#~ "La communauté travaille sur le développement d'un site communautaire avec "
+#~ "l'objectif de servir de dépôt et de galerie  pour les modules ZF2. Le "
+#~ "projet est disponible %ssur GitHub%s. Le site est déjà en ligne, et "
+#~ "contient une liste non exhaustive des modules déjà disponibles pour ZF2."
+
+#~ msgid "Explore ZF2 Modules"
+#~ msgstr "Explorer les modules ZF2"
+
+#~ msgid "Help &amp; Support"
+#~ msgstr "Aide &amp; support"
+
+#~ msgid ""
+#~ "If you need any help or support while developing with ZF2, you may reach "
+#~ "us via IRC: %s#zftalk on Freenode%s. We'd love to hear any questions or "
+#~ "feedback you may have regarding the beta releases. Alternatively, you may "
+#~ "subscribe and post questions to the %smailing lists%s."
+#~ msgstr ""
+#~ "Si vous avez besoin d'aide ou de support en développant avec ZF2, vous "
+#~ "pouvez nous joindre sur IRC : %s#zftalk sur Freenode%s. Nous aimerions "
+#~ "avoir vos questions ou vos commentaires que vous pourriez avoir au sujet "
+#~ "des versions bêta. Sinon, vous pouvez vous abonner, et poser des "
+#~ "questions sur la %sliste de diffusion%s."
+
+#~ msgid "Ping us on IRC"
+#~ msgstr "Rejoignez-nous sur IRC"
+
+#~ msgid "An error occurred"
+#~ msgstr "Une erreur est survenue"
+
+#~ msgid "Additional information"
+#~ msgstr "Informations complémentaires"
+
+#~ msgid "File"
+#~ msgstr "Fichier"
+
+#~ msgid "Message"
+#~ msgstr "Message"
+
+#~ msgid "Stack trace"
+#~ msgstr "Pile d'exécution"
+
+#~ msgid "Previous exceptions"
+#~ msgstr "Exceptions précédentes"
+
+#~ msgid "No Exception available"
+#~ msgstr "Aucune exception disponible"
+
+#~ msgid "A 404 error occurred"
+#~ msgstr "Une erreur 404 est survenue"
+
+#~ msgid "The requested controller was unable to dispatch the request."
+#~ msgstr "Le contrôleur demandé n'a pas pu dispatcher la requête."
+
+#~ msgid ""
+#~ "The requested controller could not be mapped to an existing controller "
+#~ "class."
+#~ msgstr ""
+#~ "Le contrôleur demandé ne correspond pas à une classe existante de "
+#~ "contrôleur."
+
+#~ msgid "The requested controller was not dispatchable."
+#~ msgstr "Le contrôleur demandé n'est pas dispatchable."
+
+#~ msgid "The requested URL could not be matched by routing."
+#~ msgstr "L'URL demandée n'a pas pu trouver de route correspondante."
+
+#~ msgid "We cannot determine at this time why a 404 was generated."
+#~ msgstr ""
+#~ "Nous ne pouvons pas déterminer pour le moment pourquoi une 404 a été "
+#~ "générée."
+
+#~ msgid "Controller"
+#~ msgstr "Contrôleur"
+
+#~ msgid "resolves to %s"
+#~ msgstr "résout en %s"
+
+#~ msgid "Exception"
+#~ msgstr "Exception"

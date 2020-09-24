@@ -1,0 +1,64 @@
+<?php
+echo $this->headLink()->prependStylesheet($this->basePath() . '/css/login.css');
+echo $this->headScript()->prependFile($this->basePath() . '/js/login.js');
+
+$form = $this->loginForm;
+$form->prepare();
+
+$form->setAttributes(array(
+    'action' => $this->url('zfcuser/login'),
+    'class' => 'form-login col-md-10 col-md-offset-1',
+    'method' => 'post',
+    'role' => 'form'
+));
+?>
+ 
+<?php echo $this->form()->openTag($form)?>
+
+<div class="form-group <?php if ($this->formElementErrors($form->get('identity'))) echo "has-error" ?>">
+	<label for="email"><?php echo $this->translate('Username')?>:</label> 
+	<?php
+	   $identity = $form->get('identity')->setAttribute('class', 'form-control')->setAttributes(array('placeholder' => 'ire.ibisanmi@examsqa.com', 'required'=>true));
+	   echo $this->formElement($identity);
+    if ($this->formElementErrors($identity)){
+        echo $this->formElementErrors()
+    ->setMessageOpenFormat('<p class="help-block">')
+    ->setMessageSeparatorString('</p><p class="help-block">')
+    ->setMessageCloseString('</p>')
+    ->render($identity); 
+    }
+	?>
+</div>
+
+<div class="form-group <?php if ($this->formElementErrors($form->get('credential'))) echo "has-error" ?>">
+	<label for="email"><?php echo $this->translate('Password')?>:</label> 
+	<?php 
+	   $credential =  $form->get('credential')->setAttribute('class', 'form-control')->setAttributes(array('placeholder' => '********', 'required'=>true));
+	   echo $this->formElement($credential);
+    if ($this->formElementErrors($identity)){
+        echo $this->formElementErrors()
+    ->setMessageOpenFormat('<p class="help-block">')
+    ->setMessageSeparatorString('</p><p class="help-block">')
+    ->setMessageCloseString('</p>')
+    ->render($credential); 
+    }
+	?>
+</div>
+<div class="remember-forgot">
+    <label class="pull-left"><?php echo $this->formElement($form->get('rememberMe')). ' ' .$this->translate($form->get('rememberMe')->getLabel());?></label>
+    <label class="pull-right"><a href="javascript:;" name="forgot-password-toggler"><?php echo $this->translate('Forgot Password'); ?></a></label>
+</div>
+<div class="clearfix"></div>
+
+<div class="form-action">
+	<?php 
+	   $submit = $form->get('submit')->setAttributes(array('value'=>'Login','class'=>'form-control btn btn-default'));
+	   echo $this->formElement($submit);
+	?>
+</div>
+
+<div class="login-footer">
+    <p><?php echo $this->translate('Don\'t have an account with us?'); ?></p>
+    <button type="button" name="sign-up-toggler" class="form-control btn btn-primary"><?php echo $this->translate('Sign Up'); ?></button>
+</div>
+<?php echo $this->form()->closeTag()?>

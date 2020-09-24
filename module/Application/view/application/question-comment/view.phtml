@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-12" id = 'comment-list'>
+    <?php if ($count = count($this->comments)):?>
+        <ul class="comments">        
+        <?php for ($i = $count-1; $i >= 0; $i--): //var_dump($comment); die;?>
+            <li>
+                <div class="thumbnail">
+                  <img src="/img/comment-pic.jpg" />
+                </div>
+                <div class="description">
+                    <p class=""><?php echo $this->comments[$i]->getComment(); ?></p> 
+                    <a href="/toni" class="btn-link"><?php echo $this->comments[$i]->getUser()->getUsername(); ?></a>
+                    <span class="date sub-text"><?php echo get_object_vars($this->comments[$i]->getCreatedAt())['date']?></span>
+                </div>
+            </li>
+            <?php endfor;?>
+        </ul>
+        <?php else:?>
+        	No comment found, please be the first to comment on this comment.
+        <?php endif;?>
+    </div>
+</div>

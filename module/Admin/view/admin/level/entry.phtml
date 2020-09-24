@@ -1,0 +1,125 @@
+<?php
+$title = 'LEVEL';
+$this->headTitle($title);
+$url1 = $this->url('zfcadmin');
+$url2 = $this->url('zfcadmin');
+$parameters = array(
+    array(
+        'url' => $url1,
+        'title' => 'Level'
+    ),
+    array(
+        'url' => $url2,
+        'title' => 'Registration'
+    )
+);
+echo $this->getBreadcrumbWidget($parameters);
+$adminRoleId = $this->zfcUserIdentity()->getRoles()[0]->getRoleId();
+?>
+<!--End Breadcrumb-->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i> <span><?php echo $this->translate('Exam Level')?></span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+                    </a> <a class="expand-link"> <i class="fa fa-expand"></i>
+                    </a> <a class="close-link"> <i class="fa fa-times"></i>
+                    </a>
+                </div>
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <div class="row" id = "levelContent">
+                    <div class="col-sm-9">
+                        <h4 class="page-header"><?php echo $this->translate('Registration form')?></h4>
+
+                        <?php
+                        $form = $this->levelForm; 
+                        $form->setAttributes(array(
+                            'action' => $this->url('zfcadmin/exam', array(
+                                'action' => 'entry',
+                                'controller' => 'level'
+                            ))
+                        ));
+                        $form->prepare();
+                        echo $this->form()->openTag($form);
+                        $level = $form->get('level-fieldset');
+                        $common = $form->get('common-fieldset');
+                        echo $this->formHidden($level->get('id'));
+                        ?>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($level->get('levelName')) ?></label>
+                            <div class="col-sm-10">
+                                <?php echo $this->formText($level->get('levelName')); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($level->get('levelDescription')) ?></label>
+                            <div class="col-sm-10">
+                                <?php echo $this->formTextarea($level->get('levelDescription')); ?>
+                                <small style = 'float:right' >click <a href="#" id = 'copy-content' title = 'Copy Description!' onclick="copyContent(this, 'levelDescription', '')">here</a> to copy description !</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($level->get('levelCode')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formText($level->get('levelCode')); ?>
+                            </div>
+                            <label class="col-sm-2 control-label"><?php echo $this->formLabel($level->get('isActive')) ?></label>
+                            <div class="col-sm-4">
+                                <?php echo $this->formSelect($level->get('isActive')); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php if($adminRoleId == 'root-admin') :?>
+                                <label class="col-sm-2 control-label"><?php echo $this->formLabel($level->get('institution')) ?></label>
+                                <div class="col-sm-4">
+                                    <?php echo $this->formSelect($level->get('institution')); ?>
+                                </div>
+                            <?php endif;?>
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-4">
+                                <?php 
+                                    //echo $this->formHidden($common->get('csrf'));
+                                    echo $this->formSubmit($common->get('submit')); echo ' ';
+                                    echo $this->formSubmit($common->get('clear'));
+                                echo $this->form()->closeTag();
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4 class="page-header">Instruction</h4>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="row">
+									<div class="col-sm-12"><?php echo $this->translate('Further Information')?></div>
+									<div class="col-sm-12">
+										<ul>
+											<li>Fill the form and click save button.</li>
+											<li>If you're filling for the first time, use wysiswyg editor to enter and format description, then copy and paste into description field.</li>
+											<li>If you're editing an existing content, copy description and paste into the editor, edit and reformat as required then copy and paste into description field again.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $this->getEntityListWidget('examsqa_admin_level_service', 'getExamLevelsHtml'); ?>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+submitForm('submit-btn','exam-level-form');
+submitForm('clear-btn','exam-level-form');
+submitFormAction('view-all','level-action-form','levelContent');
+findEntry('level-actions');
+</script>

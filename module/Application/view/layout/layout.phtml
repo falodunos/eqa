@@ -1,0 +1,74 @@
+<?php echo $this->doctype(); ?>
+<?php $currentLang = Locale::getDefault();?>
+<html lang="<?php echo Locale::getPrimaryLanguage(Locale::getDefault())?>">
+<head>
+<meta charset="utf-8">
+<?php echo $this->headTitle('EQA '. $this->translate('EXAMSQA'))->setSeparator(' - ')->setAutoEscape(false)?>
+
+<?php
+    $sm = $this->getServiceManager();
+echo $this->headMeta()
+    ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+    ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')?>
+
+<!-- Le styles -->
+<?php
+
+echo $this->headLink(array(
+    'rel' => 'shortcut icon',
+    'type' => 'image/vnd.microsoft.icon',
+    'href' => $this->basePath() . '/img/eqa-icon.ico'
+))
+    ->prependStylesheet($this->basePath() . '/css/component.css')
+    ->prependStylesheet($this->basePath() . '/css/style.css')
+    ->prependStylesheet($this->basePath() . '/css/loader.css')
+    ->prependStylesheet($this->basePath() . '/js/plugins/animate.css/animate.min.css')
+    ->prependStylesheet($this->basePath() . '/fonts/roboto/roboto.css')
+    ->prependStylesheet($this->basePath() . '/fonts/raleway/raleway.css')
+    ->prependStylesheet($this->basePath() . '/js/plugins/Linearicons-Free-v1.0.0/web-font/style.css')
+    ->prependStylesheet($this->basePath() . '/js/plugins/bootstrap/dist/css/bootstrap.min.css')?>
+
+<!-- Scripts -->
+<?php
+
+echo $this->headScript()
+    ->prependFile($this->basePath() . '/js/modal.js')
+    ->prependFile($this->basePath() . '/js/plugins/bootstrap/dist/js/bootstrap.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/jquery/dist/jquery.min.js')
+    ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array(
+    'conditional' => 'lt IE 9'
+))
+    ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array(
+    'conditional' => 'lt IE 9'
+));
+?>
+<?php 
+    $institutionService = $sm->get('examsqa_admin_institution_service');
+    $config = $sm->get('config');
+?>
+</head>
+<body>
+<?php echo $this->content; ?>
+    
+<footer class="text-mute text-center">
+    <div class="col-md-12">
+        <div class="language row">
+<!--             <button id="choose-language" class="btn"><i class="lnr lnr-earth"></i> Change Language</button> -->
+              <form class = 'language-form' action = '<?php echo $this->serverUrl(true)?>' method="get" id="changeLanguageForm" class="form-inline">
+                    <i class="lnr lnr-earth"></i> Change Language :
+                		<select class = 'choose-lang-select' style='width: auto; margin:0; border: none; background: transparent;' id="languageElement" name="lang" onchange="$('#changeLanguageForm').submit()">
+                			<?php $langs = $config['slm_locale']['langs']?>
+                			<?php foreach ($config['slm_locale']['supported'] as $lang):?>
+                			     <option <?php echo $currentLang == $lang ? 'selected' : ''?> value="<?php echo $lang?>"><?php echo $langs[$lang]?></option>
+                			<?php endforeach;?>
+                		</select>
+                </form>
+        </div>
+        <div class="row">
+            <small class="copyright">&copy; EQA <?php echo date('Y') ?>, Web Credit: www.examsqa.com. <?php echo $this->translate('All rights reserved.') ?></small>
+        </div>
+    </div>
+</footer>    
+<?php echo $this->inlineScript()?>
+</body>
+</html>

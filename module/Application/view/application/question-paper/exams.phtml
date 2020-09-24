@@ -1,0 +1,11 @@
+<?php if(count($this->exams)) :?>
+        <div class="col-md-12 options">
+            <div class="row btn-group" data-toggle="buttons">
+            <?php foreach ($this->exams as $exam) :?>
+                <label class="btn btn-outline"><input type="radio" autocomplete="off" name = 'featuredInstSelectedExam' class = 'featuredInstSelectedExam'  id = 'featuredInstSelectedExam-<?php echo $exam->getId()?>'><?php echo $exam->getExamCode()?></label>
+            <?php endforeach;?>
+            </div>
+        </div>
+<?php else:?>
+   <strong><?php echo $this->institution->getInstAcronym()?></strong>  has no question paper available for <strong><?php echo $this->subject->getSubjectName()?></strong> at the moment, please check back later.
+<?php endif;?>

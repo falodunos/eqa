@@ -1,0 +1,57 @@
+<?php  echo $this->headLink()->prependStylesheet($this->basePath() . '/css/start-paper.css')?>
+<div class="container">
+	<div class="row card-block examination-info">
+		<div class="col-md-12">
+			<div class="row">
+				<a href='<?php echo $this->url('zfcuser')?>'><img
+					src="<?php  echo $this->basePath()?>/img/eqa-icon.png" class="logo"
+					alt="EQA" /></a>
+				<h1>
+					<?php echo $this->subject->getSubjectName()?> <small><?php echo $this->papers[0]->getPaperExam()->getExamCode() . ' - '.$this->papers[0]->getPaperYear() ?></small>
+				</h1>
+			</div>
+			<div class="row">
+				<span class="menu-with-icons"><i class="lnr lnr-clock"></i> 
+				    <?php $duration = $this->papers[0]->getPaperDuration(); echo (int)($duration/60) .' hr ' . $duration%60 .'min(s)'?>
+				</span> <span class="menu-with-icons"><i class="lnr lnr-book"></i><?php echo $this->papers[0]->getPaperName()?></span>
+				<span class="menu-with-icons"><i class="lnr lnr-apartment"></i> <?php echo $this->institution->getInstAcronym()?></span>
+			</div>
+		</div>
+	</div>
+	<div class="row card-block examination-info">
+		<div class="col-md-12">
+			<div class="row">
+				<h3>Before you begin</h3>
+			</div>
+
+			<div class="row">
+				<ol class="col-md-7 instruction-list">
+				<?php echo $this->papers[0]->getPaperInstruction()?>
+					<!-- <li><span>There's no option to pause. Make sure you will not be
+							interrupted for 30 minutes.</span></li>
+					<li><span>Your solutions should consider all possible corner cases
+							and handle large input efficiently.</span></li>
+					<li><span>If you accidentally close your browser, use the
+							invitation link to get back to your test.</span></li>
+					<li><span>Hint: you can use your own IDE and use copy-paste, but
+							make sure your solution compiles in Codility's environment.</span></li> -->
+				</ol>
+				<ul class="col-md-5 list-unstyled">
+					<li>
+						<h3>FAQ</h3>
+						<p>
+							<a href="#">learn more about ExamsQA tests</a>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="row instruction-action">
+				<div class="col-md-3">
+					<form action="/application/question-paper/question" method='post'>
+						<button type="submit" class="form-control btn btn-default">Start</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

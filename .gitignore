@@ -1,0 +1,13 @@
+/*
+/*/
+/config/autoload/local.php
+/public/admin/img/examsqa
+!/config/
+!/module/
+!/public/
+!/vendor/
+!/composer.json
+!/init_autoloader.php
+!/.gitignore
+!/LICENSE.txt
+!/README.md

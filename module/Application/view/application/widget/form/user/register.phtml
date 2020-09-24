@@ -1,0 +1,116 @@
+<?php
+if (! $this->enableRegistration) {
+    print "Registration is disabled";
+    return;
+}
+$form = $this->registerForm;
+$form->prepare(); //var_dump($form); die;
+$form->setAttributes(array(
+    'method' => 'post',
+    'action' => $this->url('zfcuser/register'),
+    'class' => 'form-login col-md-10 col-md-offset-1',
+    'role' => 'form',
+    'id' => 'examsqa-signup-form-id'
+));
+echo $this->form()->openTag($form);
+?>
+     <?php
+    $element_names = explode(',', 'email,password,passwordVerify,submit');
+    $elements = array();
+    foreach ($element_names as $name) {
+        $elements[] = $form->get($name);
+    }
+    ?>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<label for="firstname">Firstname:</label> 
+			<?php 
+				$firstName =  $form->get('firstName')->setAttributes(array('placeholder' => 'Iremide', 'class'=>'form-control','required'=>true));
+	           echo $this->formElement($firstName);
+                if ($this->formElementErrors($firstName)){
+                    echo $this->formElementErrors()
+                        ->setMessageOpenFormat('<p class="help-block">')
+                        ->setMessageSeparatorString('</p><p class="help-block">')
+                        ->setMessageCloseString('</p>')
+                        ->render($firstName); 
+                }
+	?>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<label for="lastname">Lastname:</label> 
+			<?php 
+				$lastName =  $form->get('lastName')->setAttributes(array('placeholder' => 'Ibisanmi', 'class'=>'form-control','required'=>true));
+	           echo $this->formElement($lastName);
+                if ($this->formElementErrors($lastName)){
+                    echo $this->formElementErrors()
+                        ->setMessageOpenFormat('<p class="help-block">')
+                        ->setMessageSeparatorString('</p><p class="help-block">')
+                        ->setMessageCloseString('</p>')
+                        ->render($lastName); 
+                }
+	           ?>
+		</div>
+	</div>
+</div>
+
+<div class="form-group">
+    <label for="email">Email:</label>
+   <?php 
+	   $email =  $form->get('email')->setAttribute('class', 'form-control')->setAttributes(array('placeholder' => 'ire.ibisanmi@examsqa.com', 'required'=>true));
+	   echo $this->formElement($email);
+    if ($this->formElementErrors($email)){
+        echo $this->formElementErrors()
+    ->setMessageOpenFormat('<p class="help-block">')
+    ->setMessageSeparatorString('</p><p class="help-block">')
+    ->setMessageCloseString('</p>')
+    ->render($email); 
+    }
+	?>
+</div>
+
+<div class="form-group">
+    <label for="password">Password:</label>
+   <?php 
+	   $password =  $form->get('password')->setAttribute('class', 'form-control')->setAttributes(array('placeholder' => '********', 'required'=>true));
+	   echo $this->formElement($password);
+    if ($this->formElementErrors($password)){
+        echo $this->formElementErrors()
+    ->setMessageOpenFormat('<p class="help-block">')
+    ->setMessageSeparatorString('</p><p class="help-block">')
+    ->setMessageCloseString('</p>')
+    ->render($password); 
+    }
+	?>
+</div>
+
+<div class="form-group">
+    <label for="password">Password:</label>
+   <?php 
+	   $passwordVerify =  $form->get('passwordVerify')->setAttribute('class', 'form-control')->setAttributes(array('placeholder' => '********', 'required'=>true));
+	   echo $this->formElement($passwordVerify);
+    if ($this->formElementErrors($passwordVerify)){
+        echo $this->formElementErrors()
+    ->setMessageOpenFormat('<p class="help-block">')
+    ->setMessageSeparatorString('</p><p class="help-block">')
+    ->setMessageCloseString('</p>')
+    ->render($passwordVerify); 
+    }
+	?>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="form-action">
+<?php 
+	   $submit = $form->get('submit')->setLabel('Sign Up')->setAttributes(array('class'=>'form-control btn btn-default'));
+	   echo $this->formElement($submit);
+	?>
+</div>
+
+<?php if ($this->redirect) :?>
+<input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>" />
+<?php endif ?>
+<?php echo $this->form()->closeTag() ?>

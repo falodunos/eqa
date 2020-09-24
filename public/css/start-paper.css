@@ -1,0 +1,17 @@
+.examination-info{
+    padding: 20px;
+}
+.examination-info img.logo{
+    height: 28px;
+}
+.examination-info .menu-with-icons{
+    margin-right: 20px;
+}
+.instruction-action{
+    margin-top:20px;
+    padding: 10px 0px;
+}
+.instruction-list{
+    padding-top: 20px;
+    line-height: 2;
+}

@@ -1,0 +1,37 @@
+<?php 
+    $options = $this->options; 
+    $correctOptions = [];
+    $index = 0;
+    foreach ($options as $option){
+        if ((int) $option->getIsCorrect() == 1){
+            $correctOptions[] = $index;
+        }
+        $index += 1;
+    }
+    $asciiChrForA = 65;
+    ?>
+
+<div class="row">
+    <div class="col-md-12">
+        <?php if (count($correctOptions) > 1): ?>
+            <b class="text-center">
+                <p class="explanation-answer">
+                    The answers are 
+                    <?php 
+                        for ($i = 0; $i < count($correctOptions)-1; $i++){
+                            echo chr($asciiChrForA + $correctOptions[$i]).', ';
+                        }
+                        
+                        echo 'and ' . chr($asciiChrForA + $correctOptions[count($correctOptions) - 1]).'.';
+                    ?>
+                </p>
+            </b>
+        <?php elseif (count($correctOptions)  == 1):?>
+            <b class="text-center"><p class="explanation-answer">The answer is <?php echo chr($asciiChrForA+$correctOptions[0])?>.</p></b>
+        <?php else:?>
+            <b class="text-center"><p class="explanation-answer">No answer is provided</p></b>
+        <?php endif;?>
+        
+        <span>Further explanation of question will appear here if provided.</span>
+    </div>
+</div>

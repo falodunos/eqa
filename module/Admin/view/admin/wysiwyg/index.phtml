@@ -1,0 +1,92 @@
+<script type="text/javascript">
+  	  var isModified = false;
+      tinymce.init({
+    	  selector: 'textarea',
+    	  height: 380,
+    	  theme: 'modern',
+    	  plugins: [
+    	            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    	            'searchreplace wordcount visualblocks visualchars code fullscreen',
+    	            'insertdatetime media nonbreaking save table contextmenu directionality',
+    	            'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
+    	          ],
+    	          toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+    	          toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+    	          image_advtab: true,
+    	          templates: [
+    	            { title: 'Test template 1', content: 'Test 1' },
+    	            { title: 'Test template 2', content: 'Test 2' }
+    	          ],
+    	          content_css: [
+    	            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    	            '//www.tinymce.com/css/codepen.min.css'
+    	          ],
+    	  init_instance_callback: function (editor) {
+//     	    editor.on('focus', function (e) {
+//         	    if (isModified == false){
+//         	    	editor.setContent('');
+//         	    	isModified = true;
+//             	}
+//     	    });
+//     	    editor.on('blur', function (e) {
+//         	    if(editor.getContent() == ''){
+//         	    	editor.setContent("Type your content here, format as required, click copy content button and paste at the right location ...<br /><br />You're good to go bravo!");
+//             	 }
+//         	});
+    	  }
+    	});
+</script>
+<div class='row'>
+	<div class='col-xs-12'>
+		<div class='box'>
+			<div class='box-header'>
+				<div class='box-name'>
+					<i class='fa fa-table'></i>
+					<span>WYSIWYG EDITOR</span>
+				</div>
+				<div class='box-icons'>
+					<a class='collapse-link'>
+						<i class='fa fa-chevron-up'></i>
+					</a>
+					<a class='expand-link'>
+						<i class='fa fa-expand'></i>
+					</a>
+					<a class='close-link'>
+						<i class='fa fa-times'></i>
+					</a>
+				</div>
+				<div class='no-move'></div>
+			</div>
+			<div>
+			<textarea>
+				<br />
+				Type your content here, format as required, click copy content button and paste at the right location ...
+				<br /><br />You're good to go bravo!
+			</textarea>
+			<br />
+			<input type = 'button' name ='copy-tinymce' id = 'copy-tinymce' value = 'Copy Content' style='float: right;'/>
+			<input type = 'button' name ='clear-tinymce' id = 'clear-tinymce' value = 'Clear Content' style='float: right;'/>
+			</div>
+		</div>
+	</div>
+</div>
+
+  <script type='text/javascript'>
+	$(document).ready(function(){
+    	$('#copy-tinymce').click(function(){
+    		var content = tinyMCE.activeEditor.getContent();
+    		new Clipboard('#copy-tinymce', {
+    		    text: function(trigger) {
+        		    return content;
+//     		        return trigger.getAttribute('aria-label');
+    		    }
+    		});
+        });
+  	 });
+
+  	$(document).ready(function(){
+    	$('#clear-tinymce').click(function(){
+    		tinyMCE.activeEditor.setContent('');
+        });
+  	 });
+  </script>

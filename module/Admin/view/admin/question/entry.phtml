@@ -1,0 +1,138 @@
+<?php
+$title = 'LEVEL';
+$this->headTitle($title);
+$url1 = $this->url('zfcadmin');
+$url2 = $this->url('zfcadmin');
+$parameters = array(
+    array(
+        'url' => $url1,
+        'title' => 'Question'
+    ),
+    array(
+        'url' => $url2,
+        'title' => 'Registration'
+    )
+);
+echo $this->getBreadcrumbWidget($parameters);
+?>
+<!--End Breadcrumb-->
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-search"></i> <span><?php echo $this->translate('Question')?></span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+					</a> <a class="expand-link"> <i class="fa fa-expand"></i>
+					</a> <a class="close-link"> <i class="fa fa-times"></i>
+					</a>
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content">
+				<div class="row" id="questionContent">
+					<div class="col-sm-9">
+						<h4 class="page-header"><?php echo $this->translate('Registration form')?></h4>
+
+                        <?php
+                        $form = $this->questionForm;
+                        $form->setAttributes(array(
+                            'action' => $this->url('zfcadmin/exam', array(
+                                'action' => 'entry',
+                                'controller' => 'question'
+                            ))
+                        ));
+                        $form->prepare();
+                        echo $this->form()->openTag($form);
+                        $question = $form->get('question-fieldset');
+                        $common = $form->get('common-fieldset');
+                        echo $this->formHidden($question->get('id'));
+                        ?>
+                        <div class="form-group">
+							<label class="col-sm-2 control-label"><?php echo $this->formLabel($question->get('questionPaper')) ?></label>
+							<div class="col-sm-4">
+                                <?php echo $this->formSelect($question->get('questionPaper')); ?>
+                            </div>
+							<label class="col-sm-2 control-label"><?php echo $this->formLabel($question->get('questionSection')) ?></label>
+							<div class="col-sm-4">
+                                <?php echo $this->formSelect($question->get('questionSection')); ?>
+                            </div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label"><?php echo $this->formLabel($question->get('questionType')) ?></label>
+							<div class="col-sm-4">
+                                <?php echo $this->formSelect($question->get('questionType')); ?>
+                            </div>
+							<label class="col-sm-2 control-label"><?php echo $this->formLabel($question->get('questionTag')) ?></label>
+							<div class="col-sm-4">
+                                <?php echo $this->formText($question->get('questionTag')); ?>
+                            </div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label"><?php echo $this->formLabel($question->get('questionText')) ?></label>
+							<div class="col-sm-10">
+                                <?php echo $this->formTextarea($question->get('questionText')); ?>
+                                <small style = 'float:right' >click <a href="#" id = 'copy-content' title = 'Copy Question' onclick="copyContent(this, 'questionText', 'Question is empty !')">here</a> to copy description !</small>
+                            </div>
+
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label"><?php echo $this->formLabel($question->get('isActive')) ?></label>
+							<div class="col-sm-4">
+                                <?php echo $this->formSelect($question->get('isActive')); ?>
+                            </div>
+							<label class="col-sm-2 control-label"></label>
+							<div class="col-sm-4">
+                                <?php
+                                // echo $this->formHidden($common->get('csrf'));
+                                echo $this->formSubmit($common->get('submit'));
+                                echo ' ';
+                                echo $this->formSubmit($common->get('clear'));
+                                echo $this->form()->closeTag();
+                                ?>
+                            </div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<h4 class="page-header"><?php echo $this->translate('Instruction')?></h4>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="row">
+									<div class="col-sm-12"><?php echo $this->translate('Further Information')?></div>
+									<div class="col-sm-12">
+										<ul>
+											<li>Fill the form and click save button.</li>
+											<li>If you're filling for the first time, use wysiswyg editor to enter and format description, then copy and paste into description field.</li>
+											<li>If you're editing an existing content, copy description and paste into the editor, edit and reformat as required then copy and paste into description field again.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+            <?php echo $this->getEntityListWidget('examsqa_admin_question_service', 'getQuestionsHtml'); ?>
+        </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+submitForm('submit-btn','exam-question-form');
+submitForm('clear-btn','exam-question-form');
+initializeDependentDropdowm('/admin/question-section/section', "select[data-key='question-paper-selected']", "select[data-key='question-section-selected']", '- Select Section -');
+
+$("select[data-key='question-paper-selected']").on('change', function (e) {
+	var value = parseInt(this.value, 10);
+	//get the next question number
+	$.post('/admin/question/question-tag', {paperId : value}, function(data){
+		$('input#questionTag').val(data.questionTag);
+	});
+});
+</script>

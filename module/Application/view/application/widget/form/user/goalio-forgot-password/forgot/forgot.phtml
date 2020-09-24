@@ -1,0 +1,36 @@
+<?php
+$form = $this->forgotForm;
+$form->prepare();
+$form->setAttributes(array(
+    'method' => 'post',
+    'action' => $this->url('zfcuser/forgotpassword'),
+    'class' => "form-login col-md-10 col-md-offset-1",
+    'role' => "form",
+    'id' => 'form-submit-reset-password'
+));
+?>
+
+<?php echo $this->form()->openTag($form)?>
+
+<div class="form-group">
+    <?php //echo $this->formElementErrors($form->get('email'))?>
+	<label for="email"><?php echo $this->formLabel($form->get('email')) ?>:</label> 
+	<?php 
+        echo $this->formEmail($form->get('email')
+            ->setAttributes(array(
+            'required' => true,
+            'placeholder' => "johndoe123@gmail.com",
+            'class' => "form-control email",
+            'id' => 'email'
+        )))
+     ?>
+</div>
+<small>A reset confirmation link would be sent to this email address.</small>
+<div class="clearfix"></div>
+<div class="form-action">
+    <?php echo $this->formButton($form->get('submit')->setLabel("Reset Password")->setAttributes(array(
+            'class' => "form-control btn btn-default",
+        'id' => 'btn-submit-reset-password'
+        ))) ?>
+</div>
+<?php echo $this->form()->closeTag() ?>

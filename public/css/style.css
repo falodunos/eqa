@@ -1,0 +1,64 @@
+@import url("../fonts/flaticon/flaticon.css");
+body{
+    /*    background: #ccc;*/
+/*    background: #f7f9f9;*/
+    background: #eCeFF1;
+}
+html,body,a,span,p,b,strong,small{
+    font-family: 'Roboto';
+    color: rgb(107, 107, 107);
+}
+span,p,small{
+    color: rgb(107, 107, 107);
+}
+div.body-content{
+    padding-bottom: 60px;
+    margin-bottom: 60px;
+}
+.options label.btn{
+    margin:20px;
+    border-radius: 48px !important;
+    padding: 8px 20px !important;
+    height: 36px;
+}
+.card-block {
+    background: #ffffff none repeat scroll 0 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+.form-action{
+    margin: 40px 0px;
+}
+footer{
+    background: #f7f9f9;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    right:0;
+    left:0;
+    height: 60px;
+}
+footer .language{
+    color: #8b8b8b;
+    font-size: 11px;
+}
+footer .language button.btn{
+    font-size: 11px;
+    padding: 4px 10px;
+    height: auto;
+}
+footer .copyright{
+    color: #8b8b8b;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+}
+
+
+@media (max-width: 768px){
+    .container{
+        padding: 5px;
+    }
+    .card-block {
+        margin: 5px;
+    }
+}

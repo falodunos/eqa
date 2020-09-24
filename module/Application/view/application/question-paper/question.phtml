@@ -1,0 +1,115 @@
+<?php
+    $this->headLink()->prependStylesheet($this->basePath() . '/css/question.css');
+    $this->headScript()->prependFile($this->basePath() . '/js/question.js');
+    
+    if (count($this->questions)){
+        $question = $this->questions[$this->currentQuestionIndex];
+        $options = $question->getOptions(); 
+        $correctOptions = $this->answerOptionService->getCorrectOptions($options); 
+        $images = $this->questionImageService->findQuestionImagesBy(['question'=>$question]);  
+    }
+?>
+<div class="container">
+    <div class="timer">
+        <div class="col-md-12">
+            <a href="<?php echo $this->url('zfcuser')?>" class="btn pull-right" id = 'quit-current-exam'>
+                <i class="lnr lnr-exit"></i>
+                <span class="hidden-sm">Quit</span>
+            </a>
+            <span class="menu-with-icons pull-right"><i class="lnr lnr-clock"></i> <?php $duration = $this->paper->getPaperDuration(); echo (int)($duration/60) .' hr ' . $duration%60 .'min(s)'?></span>
+        </div>
+    </div>
+    <div class="question-nav">
+        <form method = 'post' action = '/application/question-paper/question'>
+        <button type = 'submit' name = 'targetQuestion' value = 'previous' class="previous" id = 'show-previous-question'><i class="lnr lnr-arrow-left"></i></button>
+        <button type = 'submit' name = 'targetQuestion' value = 'next' class="next" id = 'show-next-question'><i class="lnr lnr-arrow-right"></i></button>
+        </form>
+    </div>
+    <div class="row card-block examination-header">
+        <div class="col-md-6">
+            <h2 class="bold"><?php echo $this->paper->getPaperSubject()->getSubjectName()?> <small><?php echo $this->exam->getExamCode().' '. $this->paper->getExamMonth()->getExamMonth().', '.$this->paper->getPaperYear().'.'?></small></h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <ul class="social-media list-unstyled list-inline">
+                <li><a href="javascript:;" class="btn btn-link like" data-toggle="button"><i class="flaticon-like"></i><span class="badge">5</span></a></li>
+                <li>
+                    <div class="dropdown">
+                        <a href="javascript:;" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-share"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Instagram</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="javascript:;" class="btn btn-link" id="show-comments"><i class="flaticon-comment"></i></a></li>
+                <li>
+                    <a href="javascript:;" class="btn btn-link" id="show-answer">
+                        <i class="flaticon-explanation"></i>
+                        <input  type = 'hidden' id = 'currentQuestionId' value = '<?php if (count($this->questions)) {echo $question->getId();}?>'/>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row card-block examination-question">
+        <div class="col-md-12">
+            <?php if (count($this->questions)):?>
+            <div class="row">
+                <h3><b><?php echo $question->getQuestionTag()?>) </b><?php echo $question->getQuestionText()?></h3>
+            </div>
+            <?php foreach ($images as $image):?>
+            <div class="row">
+                <div class="col-md-12 text-center question-image">
+                    <img class="img-responsive" src='<?php echo $this->basePath() . '/admin/img/'.str_replace("\\", "/", $image->getDocumentPath()).$image->getDocumentName()?>'/>
+                </div>
+            </div>
+            <?php endforeach;?>
+            <div class="options">
+                <ol type="A" class="options">
+                    <?php foreach ($options as $option):?>
+                        <li><?php echo $option->getOptionText();?></li>
+                     <?php endforeach;?>
+                </ol>
+            </div>
+            <?php else: ?>
+            <div class="row">No question avaivlable for this paper, please check back later.</div>
+            <?php endif;?>
+        </div>
+    </div>
+    <div class="answers text-center">
+        <div class="row btn-group" data-toggle="buttons">
+        <?php if (count($this->questions)) :?>
+            <?php $optAscii = 65;?>
+            <?php foreach ($options as $option):?>
+                <label class="btn btn-outline">
+                    <input type="radio" id = "answer-option-id-<?php echo $option->getId()?>" value = "<?php echo $option->getId()?>" autocomplete="off"> <?php echo chr($optAscii);?>
+                </label>
+                <?php $optAscii += 1;?>
+            <?php endforeach;?>
+         <?php endif;?>
+        </div>
+    </div>
+</div>
+        
+<script type="text/javascript">
+    $(document).ready(function(){
+//     	$('#show-correct-answer-options').on('click', function(){
+//    	    var options = <?php //echo $correctOptions?>;
+//     		    for(var i = 0; i < options.length; i++){
+//     			    if (options[i].value == true){
+//     			        $('#answer-option-id-' + options[i].id).click();
+//     				    }
+//     			    }
+//     		});
+
+	    $('a#quit-current-exam').on('click', function(event){
+    	    event.preventDefault();
+    	    var confirmation = confirm('Are You Sure You Want To Quit This Current Exam Session ?');
+    	    if (confirmation == true){
+        	    var url = this.href;
+        	    window.location.assign(url);
+        	 }
+    	    });
+    });
+</script>

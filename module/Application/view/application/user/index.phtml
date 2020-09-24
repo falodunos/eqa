@@ -1,0 +1,93 @@
+<?php $institutionService = $this->getServiceManager()->get('examsqa_admin_institution_service');?>
+<?php echo $this->getNavbarWidget()?>
+<div class="container-fluid body-holder">
+	<div class="sidebar">
+		<ul class="list-group">
+			<li><a href="#" class="list-group-item active"><i
+					class="lnr lnr-clock"></i>Recent Activities</a></li>
+			<li><a href="<?php echo $this->url('zfcuser')?>"
+				class="list-group-item"><i class="lnr lnr-home"></i>Home</a></li>
+			<li class="list-group-item sub-heading">
+				<p>Manage Institutions</p>
+			</li>
+                <?php if ($institutionService->checkIfInstitutionExist()): ?>
+                    <li>
+                    <a href="<?php echo $this->url('application/front', array('action' => 'entry', 'controller' => 'institution')); ?>"
+				class="list-group-item"><i class="lnr lnr-apartment"></i><?php echo $this->translate($institutionService->getInstitutionFromAuthService()->getInstAcronym())?>
+                    </a></li>
+                <?php endif;?>
+            </ul>
+	</div>
+	<div class="body">
+		<div class="body-content container-fluid">
+		  
+            <?php echo $this->FlashMessengerHelper()?>
+            
+        <div class="row category-block">
+				<div class="col-lg-12">
+					<h3 class="page-header">
+						Featured Courses <small class='pull-right' style='font-size: 12px'>
+            	    <?php $currenInstitution = $this->examsqaSession->featuredSubjectsInstId; ?>
+            	    <form class='language-form form-inline'
+								action='<?php echo $this->serverUrl(true)?>' method="post"
+								id="changeInstitutionForm">
+            		     <?php echo $this->translate('Change Institution') . ' : '?>
+                		<select
+									style='width: auto; margin: 0; border: none; background: transparent;'
+									id="institutionElement" name="featuredSubjectsInstId"
+									onchange="$('#changeInstitutionForm').submit()">
+                			<?php foreach ($this->institutions as $institution): ?>
+                    			<option
+										<?php echo $currenInstitution == $institution->getId() ? 'selected' : ''?>
+										value="<?php echo $institution->getId()?>"><?php echo $institution->getInstAcronym()?></option>
+                			<?php endforeach;?>
+                       </select>
+							</form>
+						</small>
+					</h3>
+				</div>
+        		<?php if (count($this->subjects) > 0) : ?>
+            		<?php $subjectCount = 0;?>
+            		<?php foreach ($this->subjects as $subject) :?>
+                		<?php $subjectCount +=1;?>
+                    <div
+					class="col-lg-3 col-md-4 col-md-offset-0 col-xs-10 col-xs-offset-1 thumb">
+					<a class="thumbnail" data-category="<?php echo $subject->getId()?>"
+						id="<?php echo 'subject-'.$subject->getId()?>" href="#">
+						<div class="text-holder">
+							<h4><?php echo $subject->getSubjectName()?></h4>
+							<small>Waec, Neco, Jamb, ...</small>
+						</div>
+					</a>
+				</div>
+                		<?php if ($subjectCount == 12) break;?>
+            		<?php endforeach;?>
+                <?php else:?>
+                    <div class="col-xs-10 col-xs-offset-1 thumb">No
+					courses or subjects were found registered for selected institution,
+					please select another institution.</div>
+                <?php endif;?>
+        	</div>
+			<div class="row category-block">
+				<div class="col-lg-12">
+					<h3 class="page-header">Featured Institutions</h3>
+				</div>
+        		<?php if (count($this->institutions) > 0) : ?>
+            		<?php $institutionCount = 0;?>
+            		<?php foreach ($this->institutions as $institution) :?>
+                		<?php $institutionCount +=1;?>
+                <div class="col-lg-3 col-md-4 col-md-offset-0 col-xs-10 col-xs-offset-1 thumb">
+					<a class="thumbnail" href="#">
+						<div class="text-holder">
+							<h4><?php echo $institution->getInstAcronym()?></h4>
+							<small><?php echo $institution->getInstAcronym() == 'EXAMSQA' ? 'Waec, Neco, Jamb, ...' : 'Comp. Sci., Bio., Phy., ...'?></small>
+						</div>
+					</a>
+				</div>
+                		<?php if ($institutionCount == 8) break;?>
+            		<?php endforeach;?>
+                <?php endif;?>
+        	</div>
+		</div>
+	</div>
+</div>

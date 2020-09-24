@@ -1,0 +1,314 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: examsqa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-22 13:12+0100\n"
+"PO-Revision-Date: 2016-03-22 13:17+0100\n"
+"Last-Translator: Evan Coury <me@evancoury.com>\n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../view/admin/answer-option/entry.phtml:25
+#: ../view/admin/answer-option/index.phtml:7
+msgid "Answer Options"
+msgstr "Answer Options"
+
+#: ../view/admin/answer-option/entry.phtml:38
+#: ../view/admin/certificate/entry.phtml:39
+#: ../view/admin/exam-month/entry.phtml:38 ../view/admin/exam/entry.phtml:38
+#: ../view/admin/level/entry.phtml:39
+#: ../view/admin/question-paper/entry.phtml:38
+#: ../view/admin/question-section/entry.phtml:38
+#: ../view/admin/question-type/entry.phtml:38
+#: ../view/admin/question/entry.phtml:38 ../view/admin/subject/entry.phtml:39
+msgid "Registration form"
+msgstr "Registration form"
+
+#: ../view/admin/answer-option/entry.phtml:108
+#: ../view/admin/answer-option/entry.phtml:112
+#: ../view/admin/department/entry.phtml:121
+#: ../view/admin/institution/entry.phtml:114
+#: ../view/admin/permission/add-user.phtml:80
+#: ../view/admin/question-type/entry.phtml:83
+#: ../view/admin/question-type/entry.phtml:88
+#: ../view/admin/question/entry.phtml:101
+#: ../view/admin/question/entry.phtml:106 ../view/admin/subject/entry.phtml:97
+msgid "Instruction"
+msgstr "Instruction"
+
+#: ../view/admin/answer-option/index.phtml:27
+msgid "Exam"
+msgstr "Exam"
+
+#: ../view/admin/answer-option/index.phtml:28
+msgid "Paper"
+msgstr "Paper"
+
+#: ../view/admin/answer-option/index.phtml:29
+msgid "Section"
+msgstr "Section"
+
+#: ../view/admin/answer-option/index.phtml:30
+msgid "Tag"
+msgstr "Tag"
+
+#: ../view/admin/answer-option/index.phtml:31
+msgid "Text"
+msgstr "Text"
+
+#: ../view/admin/answer-option/index.phtml:32
+msgid "Status"
+msgstr "Status"
+
+#: ../view/admin/answer-option/index.phtml:33
+msgid "Correct"
+msgstr "Correct"
+
+#: ../view/admin/answer-option/index.phtml:34
+#: ../view/admin/permission/admins.phtml:44
+#: ../view/admin/permission/partners.phtml:45
+#: ../view/admin/permission/users.phtml:58
+msgid "Action"
+msgstr "Action"
+
+#: ../view/admin/certificate/entry.phtml:26
+msgid "Exam Certificate"
+msgstr "Exam Certificate"
+
+#: ../view/admin/common/form/elements/answer-option/text.phtml:19
+msgid "Save changes"
+msgstr "Save changes"
+
+#: ../view/admin/common/form/elements/answer-option/text.phtml:20
+msgid "Close"
+msgstr "Close"
+
+#: ../view/admin/dashboard/index.phtml:37
+msgid "Overview"
+msgstr "Overview"
+
+#: ../view/admin/dashboard/index.phtml:51
+msgid " FEATURES"
+msgstr " FEATURES"
+
+#: ../view/admin/dashboard/index.phtml:75
+msgid "SUMMARY"
+msgstr "SUMMARY"
+
+#: ../view/admin/dashboard/index.phtml:83
+msgid "Total Exams"
+msgstr "Total Exams"
+
+#: ../view/admin/dashboard/index.phtml:86
+msgid "Total Subjects"
+msgstr "Total Subjects"
+
+#: ../view/admin/dashboard/index.phtml:89
+msgid "Total Questions"
+msgstr "Total Questions"
+
+#: ../view/admin/dashboard/index.phtml:90
+msgid "Total Users"
+msgstr "Total Users"
+
+#: ../view/admin/department/entry.phtml:26
+#: ../view/admin/permission/admins.phtml:43
+msgid "Department"
+msgstr "Department"
+
+#: ../view/admin/department/entry.phtml:39
+msgid "Department Form"
+msgstr "Department Form"
+
+#: ../view/admin/department/entry.phtml:125 ../view/admin/exam/entry.phtml:111
+#: ../view/admin/level/entry.phtml:101
+#: ../view/admin/permission/add-user.phtml:85
+#: ../view/admin/subject/entry.phtml:102
+msgid "Instruction Info"
+msgstr "Instruction Info"
+
+#: ../view/admin/department/overview.phtml:18
+msgid "Department Overview"
+msgstr "Department Overview"
+
+#: ../view/admin/exam-month/entry.phtml:25
+msgid "Exam Month"
+msgstr "Exam Month"
+
+#: ../view/admin/exam/entry.phtml:25 ../view/admin/subject/entry.phtml:26
+msgid "Exam Body"
+msgstr "Exam Body"
+
+#: ../view/admin/exam/overview.phtml:18
+msgid "Exam Overview"
+msgstr "Exam Overview"
+
+#: ../view/admin/institution/entry.phtml:25
+msgid "Institution"
+msgstr "Institution"
+
+#: ../view/admin/institution/entry.phtml:38
+msgid "Institution Form"
+msgstr "Institution Form"
+
+#: ../view/admin/institution/entry.phtml:119
+msgid ""
+"An institution is an approved academic or professional body, saddled with "
+"the responsibility\n"
+"\t\t\t\t\t\t\t\t\tof educating her students or the members of such "
+"organization. By completing this process, \n"
+"\t\t\t\t\t\t\t\t\tthe institution will be associated with the currently "
+"login user account, the user will not \n"
+"\t\t\t\t\t\t\t\t\tbe able to create another institution with the same "
+"account and the institution is not transferrable\n"
+"\t\t\t\t\t\t\t\t\tfrom one user account to another.\n"
+"\t\t\t\t\t\t\t\t\t<br />\n"
+"\t\t\t\t\t\t\t\t\tHowever, you can always modify your account or institution "
+"details as you deem it fit.\n"
+"\t\t\t\t\t\t\t\t\t<br />\n"
+"\t\t\t\t\t\t\t\t\tThanks for being a partner!"
+msgstr ""
+"An institution is an approved academic or professional body, saddled with "
+"the responsibility of educating her students or the members of such "
+"organization. By completing this process,  the institution will be "
+"associated with the currently login user account, the user will not tbe able "
+"to create another institution with the same account and the institution is "
+"not transferrable\n"
+"from one user account to another. <br />"
+
+#: ../view/admin/institution/overview.phtml:18
+msgid "Institution Overview"
+msgstr "Institution Overview"
+
+#: ../view/admin/level/entry.phtml:26
+msgid "Exam Level"
+msgstr "Exam Level"
+
+#: ../view/admin/permission/add-user.phtml:24
+msgid "Permission"
+msgstr "Permission"
+
+#: ../view/admin/permission/add-user.phtml:37
+msgid "Add User Form"
+msgstr "Add User Form"
+
+#: ../view/admin/permission/admins.phtml:22
+msgid "Administrators"
+msgstr "Administrators"
+
+#: ../view/admin/permission/admins.phtml:38
+#: ../view/admin/permission/partners.phtml:39
+#: ../view/admin/permission/users.phtml:52
+msgid "Lastname"
+msgstr "Lastname"
+
+#: ../view/admin/permission/admins.phtml:39
+#: ../view/admin/permission/partners.phtml:40
+#: ../view/admin/permission/users.phtml:53
+msgid "Firstname"
+msgstr "Firstname"
+
+#: ../view/admin/permission/admins.phtml:40
+msgid "Token"
+msgstr "Token"
+
+#: ../view/admin/permission/admins.phtml:41
+#: ../view/admin/permission/partners.phtml:42
+#: ../view/admin/permission/users.phtml:55
+msgid "Email"
+msgstr "Email"
+
+#: ../view/admin/permission/admins.phtml:42
+#: ../view/admin/permission/partners.phtml:43
+#: ../view/admin/permission/users.phtml:56
+msgid "Phone"
+msgstr "Phone"
+
+#: ../view/admin/permission/overview.phtml:20
+msgid "Permission Overview"
+msgstr "Permission Overview"
+
+#: ../view/admin/permission/partners.phtml:41
+#: ../view/admin/permission/users.phtml:54
+msgid "Username"
+msgstr "Username"
+
+#: ../view/admin/permission/partners.phtml:44
+#: ../view/admin/permission/users.phtml:57
+msgid "Is_Admin"
+msgstr "Is_Admin"
+
+#: ../view/admin/permission/partners.phtml:89
+msgid "Opps! No partner record was found on this system."
+msgstr "Opps! No partner record was found on this system."
+
+#: ../view/admin/permission/roles.phtml:22
+msgid "Roles"
+msgstr "Roles"
+
+#: ../view/admin/permission/roles.phtml:57
+msgid ""
+"NOTE: This roles were statically added to the database, new version of this "
+"app will automate role generation."
+msgstr ""
+"NOTE: This roles were statically added to the database, new version of this "
+"app will automate role generation."
+
+#: ../view/admin/permission/users.phtml:29
+msgid "Users"
+msgstr "Users"
+
+#: ../view/admin/permission/users.phtml:103
+msgid "No record found ."
+msgstr "No record found ."
+
+#: ../view/admin/question-image/upload.phtml:11
+msgid "Upload files"
+msgstr "Upload files"
+
+#: ../view/admin/question-image/upload.phtml:12
+msgid "Image gallery"
+msgstr "Image gallery"
+
+#: ../view/admin/question-paper/entry.phtml:25
+msgid "Question Paper"
+msgstr "Question Paper"
+
+#: ../view/admin/question-section/entry.phtml:25
+msgid "Question Section"
+msgstr "Question Section"
+
+#: ../view/admin/question-type/entry.phtml:25
+msgid "Question Type"
+msgstr "Question Type"
+
+#: ../view/admin/question/entry.phtml:25
+msgid "Question"
+msgstr "Question"
+
+#: ../view/admin/question/overview.phtml:19
+msgid "Question Overview"
+msgstr "Question Overview"
+
+#: ../view/admin/subject/overview.phtml:20
+msgid "Subject Overview"
+msgstr "Subject Overview"
+
+#: ../view/layout/admin.phtml:6 ../view/layout/empty.phtml:6
+msgid "EXAMSQA"
+msgstr "EXAMSQA"
+
+#: ../view/layout/admin.phtml:128
+msgid "Logout"
+msgstr "Logout"
+
+#: ../view/layout/admin.phtml:294 ../view/layout/empty.phtml:162
+msgid "All rights reserved."
+msgstr "All rights reserved."

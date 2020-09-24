@@ -1,0 +1,18 @@
+<?php $years = [];?>
+<?php if(count($this->allQP4ThisSubject)) :?>
+    <div class="col-md-12 options">
+        <form action="/application/question-paper/start" method = 'post' id = 'question-paper-selected-year-form'>
+            <div class="row btn-group" data-toggle="buttons">
+                <?php foreach ($this->allQP4ThisSubject as $paper): ?>
+                    <?php  $paperExamYear = $paper->getPaperYear();?>
+                    <?php if (!in_array($paperExamYear, $years)):?>
+                        <label class="btn btn-outline"><input type="radio" autocomplete="off" name = 'featuredInstSelectedExamYear' class = 'featuredInstSelectedExamYear'  id = 'featuredInstSelectedExamYear-<?php echo $paperExamYear?>'><?php echo $paperExamYear?></label>
+                    <?php endif;?>
+                <?php endforeach;?>
+            </div>
+            <input type = 'hidden' id = 'subjectExamYearSelected' name = 'subjectExamYearSelected'/>
+        </form>
+    </div>
+<?php else:?>
+   Sorry, no question paper was found for selected year <strong><?php echo $paperExamYear?></strong> at the moment, please check back later.
+<?php endif;?>

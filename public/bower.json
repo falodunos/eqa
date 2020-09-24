@@ -1,0 +1,31 @@
+{
+  "name": "solomon",
+  "description": "Solomon's educational app",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "Edu",
+    "Frontend",
+    "Mockup",
+    "Design"
+  ],
+  "authors": [
+    "Toni",
+    "Solo",
+    "Bumspin"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "icomoon-bower": "icomoon#^0.1.0"
+  }
+}
